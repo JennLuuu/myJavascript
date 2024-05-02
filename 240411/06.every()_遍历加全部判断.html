@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>every()_遍历加全部判断</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        every方法:
+          * 遍历数组,接受一个回调函数作为参数
+          * 如果有一个回调函数返回false,则every方法停止遍历,直接返回false
+      */
+      //需求，判断所有人是否都有年票，如果有就去故宫，否则拉倒
+      var arr = [
+        {
+          name: "张三",
+          isTicket: true,
+        },
+        {
+          name: "lisi",
+          isTicket: true,
+        },
+        {
+          name: "wangwu",
+          isTicket: true,
+        },
+        {
+          name: "lily",
+          isTicket: false,
+        },
+        {
+          name: "lucy",
+          isTicket: true,
+        },
+      ];
+
+      var youPiao = arr.every(function(item){
+        return item.isTicket;
+      })
+      if(youPiao){
+        console.log("yeah! we can go!");
+      }else{
+        console.log("Oh no~~~");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>轮播图切换</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .outer {
+        width: 500px;
+        margin: 50px auto;
+        border: 1px solid #000;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .outer .inner {
+        width: 3000px;
+        display: flex;
+      }
+      .inner img {
+        width: 500px;
+        height: 350px;
+      }
+
+      .direction .left,
+      .direction .right {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        line-height: 80px;
+        text-align: center;
+        background-color: #be0b0bc2;
+        font-size: 20px;
+        color: #fff;
+
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .direction .left {
+        left: 0;
+      }
+      .direction .right {
+        right: 0;
+      }
+
+      .list {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+      }
+      .list li {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 5px;
+        background-color: #fff;
+      }
+
+      .list li.active {
+        background-color: #a53030;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+        <div class="inner">
+          <img src="../images/01.jpg" alt="" />
+          <img src="../images/02.jpg" alt="" />
+          <img src="../images/03.jpg" alt="" />
+          <img src="../images/04.jpg" alt="" />
+          <img src="../images/05.jpg" alt="" />
+        </div>
+        <div class="direction">
+          <p class="left">&lt;</p>
+          <p class="right">&gt;</p>
+        </div>
+        <ul class="list">
+          <li class="active"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <script>
+        var oImgs = document.querySelectorAll(".inner img");
+        var oInner = document.querySelector(".inner");
+        var oLists = document.querySelectorAll(".list li");
+
+        //核心:用一个变量保存当前是哪一个图片
+        var i = 0;//默认第一张
+        //改动样式的核心:使用一个变量进行修改,然后再赋值给样式
+
+        var position = 0;
+
+        setInterval(function(){
+            i++;
+            if (i>=oImgs.length) {
+                i=0
+            }
+
+            //修改位置
+            oInner.style.transform = `translateX(-${i*oImgs[0].offsetWidth}px)`;
+
+            //改变下标
+            oLists.forEach(function(item){
+                item.classList.remove("active");
+            })
+            oLists[i].classList.add("active")
+        },3000)
+      </script>
+  </body>
+</html>

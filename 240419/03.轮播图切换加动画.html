@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>轮播图切换加动画</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .outer {
+        width: 500px;
+        margin: 50px auto;
+        border: 1px solid #000;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .outer .inner {
+        width: 3000px;
+        display: flex;
+      }
+      .inner img {
+        width: 500px;
+        height: 350px;
+      }
+
+      .direction .left,
+      .direction .right {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        line-height: 80px;
+        text-align: center;
+        background-color: #be0b0bc2;
+        font-size: 20px;
+        color: #fff;
+
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .direction .left {
+        left: 0;
+      }
+      .direction .right {
+        right: 0;
+      }
+
+      .list {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+      }
+      .list li {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 5px;
+        background-color: #fff;
+      }
+
+      .list li.active {
+        background-color: #a53030;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner">
+        <img src="./images/01.jpg" alt="" />
+        <img src="./images/02.jpg" alt="" />
+        <img src="./images/03.jpg" alt="" />
+        <img src="./images/04.jpg" alt="" />
+        <img src="./images/05.jpg" alt="" />
+      </div>
+      <div class="direction">
+        <p class="left">&lt;</p>
+        <p class="right">&gt;</p>
+      </div>
+      <ul class="list">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script>
+      var oImgs = document.querySelectorAll(".inner img");
+      var oInner = document.querySelector(".inner");
+      var oLists = document.querySelectorAll(".list li");
+
+      var i = 0;
+
+      var position = 0;
+      var moveTimer = null;
+
+      setInterval(() => {
+        clearInterval(moveTimer);
+        i++;
+        if (i >= oImgs.length) {
+          i = 0;
+        }
+
+        //动画
+        var end = -i * oImgs[0].offsetWidth;
+        var totalStep = 40;
+        var everyStep = (end - position) / totalStep;
+        var startStep = 0;
+
+        moveTimer = setInterval(() => {
+          startStep++;
+          if (startStep >= totalStep) {
+            clearInterval(moveTimer);
+          }
+          position += everyStep;
+          oInner.style.transform = `translateX(${position}px)`;
+        }, 8);
+
+        //下标改变
+        oLists.forEach(function (item) {
+          item.classList.remove("active");
+        });
+        oLists[i].classList.add("active");
+      }, 3000);
+    </script>
+  </body>
+</html>

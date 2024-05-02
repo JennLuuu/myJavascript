@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>侧边栏移出_三个</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        padding: 20px 20px;
+        margin: 50px;
+        /* 开启BFC */
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: end;
+      }
+      .outer1,
+      .outer2,
+      .outer3 {
+        width: 200px;
+        display: flex;
+        flex-direction: row-reverse;
+        margin: 40px 0;
+
+        /* overflow: hidden; */
+
+        position: relative;
+      }
+      .outer1 p {
+        width: 60px;
+        height: 60px;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 60px;
+        background-color: rgb(8, 188, 253);
+        z-index: 1;
+      }
+      .outer2 p {
+        width: 60px;
+        height: 60px;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 60px;
+        background-color: rgb(8, 188, 253);
+        z-index: 1;
+      }
+      .outer3 p {
+        width: 60px;
+        height: 60px;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 60px;
+        background-color: rgb(8, 188, 253);
+        z-index: 1;
+      }
+      .inner {
+        width: 140px;
+        height: 60px;
+        color: #fff;
+        font-size: 25px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 60px;
+        background-color: rgb(196, 16, 122);
+        position: absolute;
+        right: -80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="outer1">
+        <p>反馈</p>
+        <div class="inner">我的反馈</div>
+      </div>
+      <div class="outer2">
+        <p>反馈</p>
+        <div class="inner">我的反馈</div>
+      </div>
+      <div class="outer2">
+        <p>反馈</p>
+        <div class="inner">我的反馈</div>
+      </div>
+    </div>
+    <script>
+      var oP = document.querySelectorAll("p");
+      var oInner = document.querySelectorAll(".inner");
+      console.log(oInner);
+
+      //初始化
+      var timerEnter = null;
+      var timerLeave = null;
+      //inner移动的起始位置,之后就是每次移动的起始位置
+      var start = -80;
+
+      //开关思想
+      var flagX = 1;
+
+      //给oP的每一个元素都绑定mouseenter事件
+      oP.forEach(function (item,index) {
+        
+        item.onmouseenter = function () {
+        //防止多次触发事件同时生成多个定时器
+        clearInterval(timerEnter);
+        clearInterval(timerLeave);
+
+        timerEnter = setInterval(function () {
+            console.log(111);
+            start += flagX;
+          //判断定时器清除的条件----动画截至的条件
+          if (start >= oP[0].offsetWidth) {
+            start = oP[0].offsetWidth;
+            flagX = -flagX;
+            clearInterval(timerEnter);
+            // flagX = -flagX;
+          } else {
+            // console.log(oInner[index]);
+            oInner[index].style.right = start + "px";
+          }
+        }, 1);
+      }
+      });
+      //给oP的每一个元素都绑定mouseleave事件
+      oP.forEach(function(item,index){
+        item.onmouseleave = function () {
+        //防止多次触发事件同时生成多个定时器
+        clearInterval(timerEnter);
+        clearInterval(timerLeave);
+        timerLeave = setInterval(function () {
+            console.log(222);
+            start += flagX;
+          //判断定时器清除的条件----动画截止的条件
+          if (start <= -81) {
+            start = -81;
+            flagX = -flagX;
+            clearInterval(timerLeave);
+            // flagX = -flagX;
+          } else {
+            oInner[index].style.right = start + "px";
+          }
+        }, 1);
+      }
+      })
+    </script>
+  </body>
+</html>

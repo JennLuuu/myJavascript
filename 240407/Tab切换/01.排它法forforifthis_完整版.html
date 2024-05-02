@@ -1,0 +1,103 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-07 20:08:46
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-07 20:12:52
+ * @FilePath: \MyCode\240407\Tab切换\01.方法1_完整版.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Tab切换</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .outer {
+        width: 600px;
+        height: 100px;
+        border: 1px solid #ccc;
+        margin: 100px auto 0;
+        display: flex;
+      }
+      .outer h2 {
+        width: 200px;
+        height: 100px;
+        border: 1px solid #ccc;
+        line-height: 100px;
+        text-align: center;
+      }
+      .outer h2.active {
+        background-color: beige;
+      }
+      .con {
+        width: 600px;
+        height: 300px;
+        border: 1px solid #ccc;
+        line-height: 300px;
+        text-align: center;
+        margin: 0 auto;
+      }
+      .con article {
+        /* width: 600px;
+                height: 300px;
+                line-height: 300px;
+                text-align: center; */
+        font-size: 60px;
+        display: none;
+      }
+      .con article.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="outer">
+      <h2 class="active">电影</h2>
+      <h2>电视剧</h2>
+      <h2>动漫</h2>
+    </header>
+    <section class="con">
+      <article class="active">这里是电影啊</article>
+      <article>这里是电视剧呀</article>
+      <article>这里是动漫呢</article>
+    </section>
+
+    <script>
+      //获取元素
+      var oHeader = document.querySelectorAll(".outer h2");
+      var oSection = document.querySelectorAll(".con article");
+
+      //给各个元素绑定事件
+      for (var i = 0; i < oHeader.length; i++) {
+        oHeader[i].onclick = function () {
+          //这个for是为了确定被点击的对象是谁
+          //此时知道this必然指向被点击的对象
+          //怎么确定被点击的是谁，将每个对象都遍历一遍，当它等于this，就说明此时的oHeader[i]就是被点击的对象，就可以对其进行操作
+          for (var i = 0; i < oHeader.length; i++) {
+            if (this === oHeader[i]) {
+              oHeader[i].classList.add("active");
+              //i是遍历oHeader的数，因为oSection每个要展示的元素，和oHeader是对应的，所以oSection可以借用oHeader的i
+              oSection[i].classList.add("active");
+            } else {
+              oHeader[i].classList.remove("active");
+              oSection[i].classList.remove("active");
+            }
+          }
+        };
+      }
+
+      /* 
+            此时，会发现，每一个oHeader中的判断结构都一样，都是for-if的结构；
+            那么就可以对结构进行整合；
+            三个的结构唯一的区别在于给不同的oHeader绑定事件；
+            那么，就可以再用一个for循环，遍历给每个oHeader绑定个事件
+            */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>数组中元素出现次数</title>
+    </head>
+    <body>
+        <script>
+            /* 
+            找到每一个元素出现的次数
+            * 谁出现了几次
+            * 谁 ：几次
+            * 用键值对的方式储存
+            * 所以可以采用对象来存储数据
+            * 
+            */
+
+            var arr = ["a", "b", "a", "c", "b", "a", "c", "z", "d", "b"];
+            var obj = {};
+
+            //遍历数组
+            for (var i = 0 ; i < arr.length ; i++ ){
+                //判断该属性obj中是否存在
+                if(obj[arr[i]]){
+                    //存在，则给其的值加1
+                    obj[arr[i]]++;
+                }
+                //若不存在，则给其赋值为1（对象属性特性：若赋值的属性，对象中不存在，则会强行给对象添加一个该属性，并赋值
+                else{
+                    obj[arr[i]] = 1;
+                }
+            }
+            console.log(obj);
+
+            //对象中用 `a ：5;`的方式来储存，所以`arr[i]`就是对象中的key
+            //判断对象中是否存在这个key，不存在则给对象添加该key，并赋值为1（该属性第一次出现）
+            //存在，则给该key的值加1
+            //obj.arr[i]拿到该属性的值，但点操作符表示后面的是名叫arr[i]的属性，这必然是没有的，此时的arr[i]是一个表达式，我们需要解析它的值，才是我们需要的属性名；
+            //所以通过中括号来拿，就能对arr[i]进行解析，获取到他所指代的属性名
+            //obj[arr[i]]
+        </script>
+    </body>
+</html>

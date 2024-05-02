@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>实时拿到表单更改的内容</title>
+  </head>
+  <body>
+    <input type="text" id="ipt" />
+    <div id="show"></div>
+    <span>还可以输入<span id="num">10</span>字</span>
+
+    <script>
+      //实时拿到表单更改的内容
+      /* var oIpt = document.getElementById("ipt");
+      var oShow = document.getElementById("show")
+
+      oIpt.oninput = function () {
+        //将ipt输入的内容附到页面上
+        oShow.textContent = this.value;
+      }; */
+
+      //实时拿到表单更改的内容,并且限制输入个数
+      var oIpt = document.getElementById("ipt");
+      var oShow = document.getElementById("show");
+      var oNum = document.getElementById("num");
+
+      var textNum = 10;
+      oIpt.oninput = function () {
+        //获取当前输入的字的个数
+        var nowLen = this.value.length;
+        //剩余可输入个数
+        var yuLen = textNum - nowLen;
+
+        //限制可输入的内容个数
+        if (yuLen < 0) {
+          this.value = this.value.slice(0, textNum);
+          alert("只可以输入10个字");
+          return;
+        } else {
+          //将ipt输入的内容附到页面上
+          oShow.textContent = this.value;
+          //将剩余可输入的个数放到页面上
+          oNum.textContent = yuLen;
+        }
+      };
+    </script>
+  </body>
+</html>

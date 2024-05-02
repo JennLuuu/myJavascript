@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>五一倒计时</title>
+    <style>
+      .con {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con"></div>
+    <script>
+      /* 
+            1. 设置一个目标时间
+            2. 每时每刻获取当前时间
+            3. 算两者的时间差(时间差一直在减小,就可以倒计时)
+            4. 将时间差转为天时分秒毫秒
+            5. 将转换后的值放到页面上
+            6. 从2开始,都包在定时器中时刻运行即可
+            */
+      var target = new Date("2024-04-30 17:00:00");
+
+      setInterval(function () {
+        var now = new Date();
+
+        var daoJiShi = target - now;
+
+        var day = Math.floor(daoJiShi / (1000 * 60 * 60 * 24));
+        var _day = daoJiShi % (1000 * 60 * 60 * 24);
+
+        var hour = Math.floor(_day / (1000 * 60 * 60));
+        var _hour = _day % (1000 * 60 * 60);
+
+        var minute = Math.floor(_hour / (1000 * 60));
+        var _minute = _hour % (1000 * 60);
+
+        var second = Math.floor(_minute / 1000);
+        var millisecond = _minute % 1000;
+
+        var oCon = document.querySelector(".con");
+        oCon.textContent = `
+            距离五一假期还有${day}天${hour}时${minute}分${second}秒${millisecond}毫秒
+            `;
+      }, 1);
+    </script>
+  </body>
+</html>

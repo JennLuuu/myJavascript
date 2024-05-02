@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>质数的开关思想time1</title>
+    </head>
+    <body>
+        <script>
+            
+            //18. 找出100以内所有的素数（质数）
+
+            //外层for用来遍历1-100的每个数
+            for (var i = 2 ; i <= 100 ; i++ ){
+
+                var flag = true;
+
+                //内层for用于,每个数进来以后,遍历每个数所有可能存在的因子,所以j<=i
+                //因为要找质数,除1和自身外,不能被整除,所以j从2开始,j不取i
+                for (var j = 2 ; j < i ; j++ ){
+                    //如果i%j为0,说明i这个数有其他的因子,不符合质数的条件,直接break跳出当前循环
+                    //因为forj是fori结束}前最后的代码,所以跳出forj后,本次fori也执行完毕,就能跳出fori,执行i++
+                    if (i % j === 0) {
+
+                        flag = false; 
+
+                        break;
+                    }
+                    //至此,只能是当i不为质数时跳出循环,无法拿到是质数的i
+                    //不好拿到质数,所以就可以用开关思想,一进fori,先假定i就是质数,flag为true
+                    //当i不为质数时,就给i的开关关掉,flag为false
+                }
+
+                //怎么获取到质数,当开关为开状态,即flag为true时,i为质数
+                if (flag) {
+                    console.log(i);
+                }
+            }
+        </script>
+    </body>
+</html>

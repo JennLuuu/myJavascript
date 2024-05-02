@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>Error错误对象语句</title>
+    </head>
+    <body>
+
+        <script>
+            /* 
+            Error是基类,有六种子类错误类型,其中,
+            SyntaxError:出现语法错误时抛出;
+            ReferenceError:出现引用错误时抛出(读取变量不存在);
+            TypeError:出现值的类型错误时抛出
+            */
+
+            /* 
+            手动抛出异常:
+            当我们自己封装了一个函数(轮子)时,要求使用者按照我指定的规则使用我的轮子,我就可以自己书写异常情况,当使用者违规使用时,给其抛出异常提示
+
+            创建方式:
+            new Error("提示异常信息")
+            new 新创建一个异常
+            Error 异常的类型,Error为常见基础异常情况,还可以写常用的那三种异常
+            "异常信息" 显示给使用者看的异常信息
+
+            使用方式:
+            throw 用于抛出
+
+            */
+
+            //封装一个函数,主要用于计算两个数的平方和
+            function sum(a, b) {
+                if(a === undefined || b === undefined){
+                    throw new TypeError("输入的值类型有误");
+                }
+                return a * a + b * b ;
+            }
+
+            var res = sum(8 , 2);
+            console.log(res);
+        </script>
+    </body>
+</html>

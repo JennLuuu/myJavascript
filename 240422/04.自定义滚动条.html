@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>自定义滚动条</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+      #con {
+        background-color: azure;
+      }
+      #splider {
+        width: 30px;
+        height: 100%;
+        background-color: #b5b4b4;
+        position: fixed;
+        top: 0;
+        right: 0;
+      }
+      #box {
+        width: 100%;
+        height: 60px;
+        background-color: hotpink;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="con"></div>
+    <div id="splider">
+      <div id="box">我的滚动条</div>
+    </div>
+    <script>
+      var oCon = document.getElementById("con");
+      var oSplider = document.getElementById("splider");
+      var oBox = document.getElementById("box");
+      var oHtml = document.documentElement;
+
+      for (var i = 0; i < 600; i++) {
+        oCon.innerHTML += i + "<br/>";
+      }
+
+      //鼠标的高度:
+      var mouseHeight = (oHtml.clientHeight/oCon.offsetHeight)*oSplider.clientHeight;
+      oBox.style.height = mouseHeight + "px";
+
+
+      //鼠标按下,拖动oBox移动,并连带页面oCon移动,鼠标抬起,oBox不动
+      //给oBox绑定鼠标按下事件
+      oBox.onmousedown = function (e) {
+        //清除默认事件: 按下后滑动的默认选中事件
+        e.preventDefault();
+
+        //鼠标距离oBox边缘的距离
+        var mouseToBox = e.offsetY;
+
+        //绑定鼠标移动事件
+        //为了在页面中也能摁住滑动,可以将移动事件绑定在document上
+        document.onmousemove = function (e) {
+          //oBox的位置
+          var boxPosition = e.clientY - mouseToBox;
+          //   console.log(boxPosition);
+
+          //判断临界值
+          if (boxPosition <= 0) {
+            boxPosition = 0;
+          } else if (boxPosition >= oHtml.clientHeight - oBox.offsetHeight) {
+            boxPosition = oHtml.clientHeight - oBox.offsetHeight;
+          }
+
+          //赋值
+          oBox.style.transform = "translateY(" + boxPosition + "px)";
+
+          //绑定鼠标抬起事件
+          document.onmouseup = function (e) {
+            document.onmousemove = null;
+            oBox.onmouseup = null;
+          };
+
+          //控制页面oCon的移动
+          //视口的高度/文档的高度 === oBox的高度/滑槽oSpliter的高度
+          //滑块能移动的总距离
+          var boxAllMove = oSplider.clientHeight - oBox.offsetHeight;
+          //文档能移动的总距离
+          var docAllMove = oCon.offsetHeight - oHtml.clientHeight;
+          //比例:
+          //var scale = docAllMove / boxAllMove;
+          var scale = boxPosition / boxAllMove;
+          //文档移动的距离
+          //var docMove = scale * boxPosition;
+          var docMove = scale * docAllMove;
+          oCon.style.transform = "translateY(-" + docMove + "px)";
+        };
+      };
+    </script>
+  </body>
+</html>

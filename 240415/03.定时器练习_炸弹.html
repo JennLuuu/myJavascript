@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>定时器练习_拆炸弹</title>
+  </head>
+  <body>
+    <div class="con">炸弹还有<span>3</span>秒爆炸</div>
+    <button class="clearBoom">拆除炸弹</button>
+    <script>
+      // 1. 3秒后引爆炸弹
+      /* var oCon = document.querySelector(".con");
+
+            setTimeout(() => {
+                oCon.textContent = `BOOM!!!`;
+            }, 3000
+        ); */
+
+      //2. 一个可以拆除的定时炸弹
+      /* var oCon = document.querySelector(".con");
+      var oClearBoom = document.querySelector(".clearBoom");
+
+      var timer = setTimeout(() => {
+        oCon.textContent = `BOOM!!!`;
+      }, 3000);
+
+      oClearBoom.onclick = function(){
+        clearTimeout(timer);
+      } */
+
+      //3. 带倒计时的定时器
+      var oCon = document.querySelector(".con");
+      var oClearBoom = document.querySelector(".clearBoom");
+      var oSpan = document.querySelector("span");
+
+      var timeInit = 3;
+
+      //倒计时展示
+      var timer1 = setInterval(() => {
+        oSpan.textContent = `${--timeInit}`;
+      }, 1000);
+
+      //炸弹爆炸的计时器
+      var timer = setTimeout(() => {
+        oCon.textContent = `BOOM!!!`;
+      }, 3000);
+
+      //点击按钮清除炸弹
+      oClearBoom.onclick = function () {
+        clearTimeout(timer1);
+        clearTimeout(timer);
+      };
+    </script>
+  </body>
+</html>

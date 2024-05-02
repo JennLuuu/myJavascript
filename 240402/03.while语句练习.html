@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>while语句练习</title>
+    </head>
+    <body>
+
+        <script>
+            //求1到9的和
+            var count = 1;
+
+            var sum = 0;
+
+            while (count <= 9) {
+                sum += count;
+                count++;
+            }
+
+            console.log(sum);
+
+            console.log("____________________________________");
+
+            //求1-100的和
+            var count1 = 1;
+
+            var sum1 = 0;
+
+            while (count1 <= 100) {
+                sum1 += count1;
+                count1++;
+            }
+
+            console.log(sum1);
+
+            console.log("____________________________________");
+
+            //求1-99中单数的和
+            var count2 = 1;
+
+            var sum2 = 0;
+
+            while (count2 <= 99) {
+                if(count2 % 2 !== 0){
+                    sum2 += count2;
+                }
+                count2++;
+            }
+            
+            console.log(sum2);
+
+            console.log("____________________________________");
+
+            //求1-99中是3的倍数的数字和
+            var count3 = 0;
+
+            var sum3 = 0;
+
+            while (count3 <= 99) {
+                if (count3 % 3 === 0) {
+                    sum3 += count3;
+                }
+                count3++;
+            }
+
+            console.log(sum3);
+        </script>
+    </body>
+</html>

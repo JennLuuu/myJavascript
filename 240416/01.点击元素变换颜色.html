@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>点击元素变换颜色</title>
+    <style>
+      #turnC {
+        width: 200px;
+        height: 200px;
+        border: 2px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="turnC"></div>
+    <script>
+      var oTurnC = document.getElementById("turnC");
+
+      //绑定点击事件
+
+      /* var arr = ["red", "green", "blue", "pink"];
+      for (var i = 0; i < arr.length; i++) {
+        var s = i;
+        oTurnC.onclick = function () {
+            var color = arr[s];
+          oTurnC.style.backgroundColor = "color";
+        };
+      } */
+      var index = 0;
+      oTurnC.onclick = function (){
+        index++;
+            if (index%) {
+                var color = arr[i];
+                oTurnC.style.backgroundColor = "color";
+            }
+            if (i===2) {
+                var color = arr[i];
+                oTurnC.style.backgroundColor = "color";
+            }
+            if (i===3) {
+                var color = arr[i];
+                oTurnC.style.backgroundColor = "color";
+            }
+            if (i===4) {
+                var color = arr[i];
+                oTurnC.style.backgroundColor = "color";
+            }
+    </script>
+  </body>
+</html>

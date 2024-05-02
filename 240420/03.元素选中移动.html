@@ -1,0 +1,132 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-20 16:32:55
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-21 21:05:05
+ * @FilePath: \My_JavaScript\240420\03.元素选中移动.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>元素选中移动</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      #outer {
+        width: 700px;
+        display: flex;
+      }
+      #left {
+        width: 200px;
+        background-color: beige;
+        font-size: 18px;
+      }
+      #right {
+        width: 200px;
+        background-color: beige;
+        font-size: 18px;
+      }
+      #left li {
+        text-align: center;
+      }
+      #right li {
+        text-align: center;
+      }
+      #btn {
+        width: 70px;
+        background-color: rgb(187, 228, 228);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="outer">
+      <ul id="left">
+        <li>left-1</li>
+        <li>left-2</li>
+        <li>left-3</li>
+        <li>left-4</li>
+        <li>left-5</li>
+      </ul>
+      <div id="btn">
+        <button id="toLeft">toLeft</button>
+        <button id="toRight">toRight</button>
+      </div>
+      <ul id="right">
+        <li>right-1</li>
+        <li>right-2</li>
+        <li>right-3</li>
+        <li>right-4</li>
+        <li>right-5</li>
+      </ul>
+    </div>
+    <script>
+      var oLeft = document.getElementById("left");
+      var oRight = document.getElementById("right");
+      var oToLeft = document.getElementById("toLeft");
+      var oToRight = document.getElementById("toRight");
+
+      oLeft.onclick = function (e) {
+        //判断点击的target是否是li,是则改变标识状态
+        if (e.target.nodeName !== "LI") {
+          return;
+        }
+
+        e.target.style.color = "red";
+
+        e.target.dataset.select = "true";
+      };
+
+      oRight.onclick = function (e) {
+        //判断点击的target是否是li,是则改变标识状态
+        if (e.target.nodeName !== "LI") {
+          return;
+        }
+
+        e.target.style.color = "red";
+
+        e.target.dataset.select = "true";
+      };
+
+      //给按钮绑定点击事件,点击按钮,将有select属性为true的元素移动
+      oToLeft.onclick = function () {
+        var rightChildren = oRight.children;
+        for (var i = 0; i < rightChildren.length; i++) {
+          if (rightChildren[i].dataset.select) {
+            //清除移动过去的样式
+            rightChildren[i].dataset.select = "";
+            rightChildren[i].style.color = "#000";
+            //移动
+            oLeft.appendChild(rightChildren[i]);
+            //因为这会导致元素的下标变化,所以点一次只能移动一个符合条件的元素
+            i--;
+          }
+        }
+      };
+
+      oToRight.onclick = function () {
+        var leftChildren = oLeft.children;
+        for (var i = 0; i < leftChildren.length; i++) {
+          if (leftChildren[i].dataset.select) {
+            //清除移动过去的样式
+            leftChildren[i].dataset.select = "";
+            leftChildren[i].style.color = "#000";
+            //移动
+            oRight.appendChild(leftChildren[i]);
+            //因为这会导致元素的下标变化,所以点一次只能移动一个符合条件的元素
+            i--;
+          }
+        }
+      };
+    </script>
+  </body>
+</html>

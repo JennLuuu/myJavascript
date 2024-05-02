@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+            //实例化创建数组
+            //创建一个空数组
+            var arr = new Array()
+            console.log(arr);
+
+            //创建一个有初始值的数组
+            var arr1 = new Array(2,3,4);
+            console.log(arr1);
+
+            //创建一个限定长度的数组
+                //括号中只写一个数，看作是数组的长度限制，非只有一个数的数组
+            var arr2 = new Array(6);
+            console.log(arr2);
+            
+            //字面量方式创建数组
+            //创建一个空数组；
+            var arr3 = [];
+            console.log(arr3);
+
+            //创建一个有初始值的数组
+            var arr4 = [3, 4, 5, 6];
+            console.log(arr4);
+
+            //数组的长度length属性
+            //可读
+            console.log(arr4.length);
+            //可写
+            arr4.length = 2;
+            console.log(arr4);
+            console.log(arr4.length);
+            arr4.length = 30;
+            console.log(arr4);
+            console.log(arr4.length);
+
+            //数组的下标
+                //可读
+            console.log(arr4[1]);
+                //可写
+            arr4[2] = 7;
+            console.log(arr4);
+                //方括号中可计算
+            arr4[3+1] = 9;
+            console.log(arr4);
+        </script>
+    </body>
+</html>

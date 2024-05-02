@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>两数交换的两种方法</title>
+    </head>
+    <body>
+
+        <script>
+            //两数交换的两种方法
+            //法一:第三者法
+            var a = 3;
+            var b = 6;
+
+            var s = null;
+            s = a;
+            a = b;
+            b = s;
+            console.log("a = " + a, "b = " + b);//a=6;b=3
+
+            //法二:总数法
+            a = a + b;
+            b = a - b;
+            a = a - b;
+            console.log("现在的a = " + a, "现在的b = " + b);
+        </script>
+    </body>
+</html>

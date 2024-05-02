@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>预加载效果</title>
+    <style>
+        .outer{
+            width: 400px;
+            height: 30px;
+            border: 4px solid olive;
+            padding: 5px;
+        }
+        .inner{
+            width: 0%;
+            height: 30px;
+            background-color: olive;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner"></div>
+    </div>
+    <script>
+      /* 
+            一旦在js运行时产生的img标签,并且提供了src属性,则浏览器就会加载对应的图片
+            */
+
+      var imgUrlArr = [
+        "./images/01.jpg",
+        "./images/02.jpg",
+        "./images/03.jpg",
+        "./images/04.jpg",
+        "./images/05.jpg",
+        "./images/06.jpg",
+        "./images/07.jpg",
+        "./images/08.jpg",
+        "./images/09.jpg",
+        "./images/10.jpg",
+        "./images/11.jpg",
+        "./images/12.jpg",
+        "./images/13.jpg",
+        "./images/14.jpg",
+        "./images/15.jpg",
+      ];
+
+      //获取inner
+      var oInner = document.querySelector(".inner");
+      //图片总个数初始化
+      var imgInit = 0;
+      //遍历图片地址数组,将地址一个个给到每次遍历生成的img标签上,生成一张张图片
+      imgUrlArr.forEach(function (item) {
+        //创建img标签
+        var newImg = new Image();
+        //把每次遍历传进来的地址给到img标签的src上
+        newImg.src = item;
+
+        //给每一个img标签绑定load事件
+        newImg.onload = function () {
+          //绑定一次加载事件,就说明有一个img标签,百分比通过已加载比上总个数来提现,所以每加载一个img标签,就要累加一次
+          imgInit++;
+          //将百分比给到inner的宽度
+          oInner.style.width = `${(imgInit / imgUrlArr.length) * 100}%`;
+        };
+      });
+    </script>
+  </body>
+</html>

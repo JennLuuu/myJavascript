@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>元素出现次数time4</title>
+    </head>
+    <body>
+        <script>
+            var arr = ["a", "b", "c", "d", "e", "f", "j", "c", "d","a", "b"];
+            //xxx出现几次,用键值对的方式来存放
+            //生成的数据就可以放到对象中
+            var obj = {};
+
+            //遍历数组
+            for (var i = 0 ; i < arr.length ; i++ ){
+                if (obj[arr[i]]) {
+                    obj[arr[i]]++;
+                }else{
+                    obj[arr[i]] = 1;
+                }
+            }
+            console.log(obj);
+
+        </script>
+    </body>
+</html>

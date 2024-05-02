@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>循环作业18</title>
+    </head>
+    <body>
+
+        <script>
+
+            /* 
+            18. 找出100以内所有的素数（质数）
+  
+                for(100以内的数)
+                for(除数)
+            {
+                除数++
+            }
+
+            4
+                1
+                2   4%2==0
+            */
+
+            //第一个for循环,遍历0-100内所有的数
+            //第二个for循环,用来遍历因子,若i对j取余值为0,则说明i有除了1和自身,其他的因子,就跳出;若不为0,则是质数
+
+            //我的错误答案
+            /* for (var i = 0 ; i <= 100 ; i++ ){  //5 6
+                //用来遍历因子,因为1是所有数的因子,所以j就可以从2开始遍历参与计算
+                //一个数的因子最大不可能超过这个数本身,所以j<i,并且也排除了自身作为因子的情况
+                for (var j = 2 ; j < i ; j++ ){  // 2 3 4  2 3 
+                    if (i % j !== 0 ) {
+                        console.log( i + "为质数");
+                    }else{
+                        
+                        // console.log("不为质数");
+                        break;
+                    }
+                }
+            } */
+
+            //我的错误答案
+            /* for (var i = 0 ; i <= 100 ; i++ ){  //5 6
+                //用来遍历因子,因为1是所有数的因子,所以j就可以从2开始遍历参与计算
+                //一个数的因子最大不可能超过这个数本身,所以j<i,并且也排除了自身作为因子的情况
+                for (var j = 2 ; j < i ; j++ ){  // 2 3 4  2 3 
+                    if (i % j === 0 ) {  //如果他能进到这个当前分支,说明就不是质数,可直接跳出
+                        // console.log( i + "不为质数");
+                        break;
+                    }else{  //进不到上面的分支,那就进入到当前分支,说明他就是质数
+                        
+                        console.log( i + "为质数");
+                    }
+                }
+                // console.log( i + "是质数");
+            } */
+           
+            //刘的答案
+            /* for (var i = 0 ; i < 100 ; i++ ){
+                for (var j = 2 ; j <= i ; j++ ){
+                    if (j === i) {
+                        console.log(i + "为质数");
+                    }
+                    else if (i % j === 0) {
+                        break;
+                    }
+                }
+            } */
+        </script>
+    </body>
+</html>

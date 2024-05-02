@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>数组去重思路四</title>
+    </head>
+    <body>
+        <script>
+            /* // 思路4.1: 创建一个新数组,把元素放入新数组,放入之前,判断新数组中是否有重复的,如果有则不放了
+            var arr = ["a", "b", "a", "c", "a", "d", "z", "c", "x", "z"];
+
+            var newArr = [];
+
+            outer:for (var i = 0 ; i < arr.length ; i++ ){
+                for (var j = 0 ; j < newArr.length ; j++ ){
+                    if (newArr[j] === arr[i]) {
+                        continue outer;
+                    }
+                }
+                newArr.push(arr[i]);
+            }
+            console.log(newArr); */
+
+            /* // 思路4.2: 创建一个新数组,把元素放入新数组,放入之前,判断新数组中是否有重复的,如果有则不放了(includes())
+            var arr = ["a", "b", "a", "c", "a", "d", "z", "c", "x", "z"];
+
+            var newArr = [];
+
+            for (var i = 0 ; i < arr.length ; i++ ){
+               if (!newArr.includes(arr[i])) 
+                newArr.push(arr[i]);                
+            }
+            console.log(newArr); */
+
+            // 思路4.3: 创建一个新数组,把元素放入新数组,放入之前,判断新数组中是否有重复的,如果有则不放了(reduce)
+            var arr = ["a", "b", "a", "c", "a", "d", "z", "c", "x", "z"];
+
+            var res = arr.reduce(function(p,c){
+                if(!p.includes(c)){
+                    p.push(c)
+                }
+                return p;
+            },[]);
+            console.log(res);
+        </script>
+    </body>
+</html

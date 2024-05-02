@@ -1,0 +1,44 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-15 20:47:53
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-15 21:55:40
+ * @FilePath: \My_JavaScript\240415\05.倒计时练习.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>倒计时练习</title>
+    </head>
+    <body>
+        <div class="con">敌军还有 <span class="time">5</span>秒到达战场</div>
+
+        <script>
+            var oCon = document.querySelector(".con");
+            var oTime = document.querySelector(".time");
+
+            //初始化
+            var timer = 0;
+            var timeInit = 5;
+            //定时器,持续的更新span中的内容,所以要用间歇调用定时器
+            timer = setInterval(() => {
+                timeInit--;
+
+                //判断终止条件
+                if (timeInit<=0) {
+                    //将临界值赋给timeInit
+                    timeInit=0;
+                    clearInterval(timer);
+                    oCon.textContent="全军出击";
+                }
+
+                //将值附到页面上
+                oTime.textContent=`${timeInit}`;
+            }, 1000);
+        </script>
+    </body>
+</html>

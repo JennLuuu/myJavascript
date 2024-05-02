@@ -1,0 +1,39 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-04 20:41:23
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-04 21:03:47
+ * @FilePath: \MyCode\240404\01.label语句练习.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>label语句练习</title>
+  </head>
+  <body>
+    <script>
+      /* 
+            label声明:
+            - 在js中,label语句可以为一行语句添加标签,以方便在复杂的结构中设置跳转目标
+            - 起的label名字 :
+                语句;
+
+            - label和break语句,continue语句配合使用,以便跳出内层或外层循环体
+            */
+
+      outer : for (var i = 0; i < 10; i++) {
+        inner : for (var j = 0; j < 6; j++) {
+          if (j === 3) {
+            
+            continue inner;
+          }
+          console.log(i, j);
+        }
+      }
+    </script>
+  </body>
+</html>

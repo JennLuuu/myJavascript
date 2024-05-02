@@ -1,0 +1,98 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-12 09:40:34
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-12 20:05:22
+ * @FilePath: \My_JavaScript\240412\01.手动去除字符串中的空格.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //已知一个字符串,去掉字符串中所有的空格
+
+      //方法一:
+      /* var str = "  123  123 123  323 23 ";
+      //将字符串以空格切割
+      str.split(" ");
+      //console.log(str.split(" "));
+      
+      var arr = str.split(" ");
+
+      //遍历数组,将每一个不为空的元素压入新数组中
+      var newArr = arr.reduce(function(p,c){
+        Boolean(c) && p.push(c);
+
+        return p;
+      },[])
+      console.log(newArr);
+
+      //数组转字符串
+      var newStr = newArr.join("");
+      console.log(newStr); */
+
+      //方法二:
+      /* var str = "  123  123 123  323 23 ";
+
+      var newStr = "";
+      for (var i = 0 ; i < str.length ; i++ ){
+        str[i] !== " "&& (newStr += str[i]);
+      }
+      console.log(newStr); */
+
+      //方法三:
+      /* var str = "  123  123 123  323 23 ";
+
+      var str1 = str.split(" ");
+      console.log(str.split(" "));
+      var res = str1.reduce(function(p,c){
+        c !== "" && p.push(c);
+
+        return p;
+      },[]).join("")
+
+      console.log(res); */
+
+      // 已知我们得到的对象是：{username: "xiaowang", password: "12345", age: "18", sex: "女", score: "90"}
+      // 已知被拼接的url地址是：http://www.baidu.com
+      // 最终得到：http://www.baidu.com?username=xiaowang&password=12345&age=18&sex=女&score=90
+
+      var obj = {
+        username: "xiaowang",
+        password: "12345",
+        age: "18",
+        sex: "女",
+        score: "90",
+      };
+
+      var urlStr = "http://www.baidu.com";
+
+      var msgArr = [];
+      var msgArr2 = [];
+      for (var key in obj) {
+        // console.log(key);
+        // console.log(obj[key]);
+        msgArr.push(key);
+        msgArr2.push(obj[key]);
+
+        // console.log(msgArr);
+        // console.log(msgArr2);
+      }
+      var str = "";
+      for (var i = 0; i < msgArr.length; i++) {
+        str += msgArr[i] + "=" + msgArr2[i] + "&";
+      }
+      console.log(str);
+      
+      var res = urlStr+"?"+str;
+      console.log(res.slice(0,-1));
+    </script>
+  </body>
+</html>

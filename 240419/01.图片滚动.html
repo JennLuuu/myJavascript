@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>图片滚动</title>
+    <style>
+      .outer {
+        width: 1000px;
+        margin: 50px auto;
+        border: 1px solid #000;
+        overflow: hidden;
+      }
+      .inner {
+        width: 2500px;
+        display: flex;
+      }
+
+      .inner img {
+        width: 200px;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="left">左走</button>
+    <button id="right">右走</button>
+    <button id="stop">停止</button>
+    <div class="outer">
+      <div class="inner">
+        <img src="./images/01.jpg" alt="" />
+        <img src="./images/02.jpg" alt="" />
+        <img src="./images/03.jpg" alt="" />
+        <img src="./images/04.jpg" alt="" />
+        <img src="./images/05.jpg" alt="" />
+        <img src="./images/01.jpg" alt="" />
+        <img src="./images/02.jpg" alt="" />
+        <img src="./images/03.jpg" alt="" />
+        <img src="./images/04.jpg" alt="" />
+        <img src="./images/05.jpg" alt="" />
+      </div>
+    </div>
+    <script>
+      var oOuter = document.querySelector(".outer");
+      var oLeft = document.getElementById("left");
+      var oRight = document.getElementById("right");
+      var oStop = document.getElementById("stop");
+
+      //滚动距离初始化
+      var scroll = 0;
+      //初始化timer
+      var timer = null;
+
+      timer = setInterval(() => {
+        scroll++;
+        if (scroll >= 1000) {
+          scroll = 0;
+        }
+
+        oOuter.scrollLeft = scroll;
+      }, 5);
+
+      oLeft.onclick = function () {
+        clearInterval(timer);
+
+        timer = setInterval(() => {
+          scroll++;
+          if (scroll >= 1000) {
+            scroll = 0;
+          }
+
+          oOuter.scrollLeft = scroll;
+        }, 5);
+      };
+      oRight.onclick = function () {
+        clearInterval(timer);
+
+        timer = setInterval(() => {
+          scroll--;
+          if (scroll <= 0) {
+            scroll = 1000;
+          }
+
+          oOuter.scrollLeft = scroll;
+        }, 5);
+      };
+      oStop.onclick = function () {
+        clearInterval(timer);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>滚轮事件__滚动放大缩小</title>
+    <style>
+      #box {
+        width: 200px;
+        height: 200px;
+        background-color: palevioletred;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script>
+      var oBox = document.getElementById("box");
+
+      var boxObj = {
+        x: 200,
+        y: 200,
+      };
+
+      /* //给oBox绑定滚轮滚动事件(谷歌版本)
+      oBox.onmousewheel = function (e) {
+        if (e.wheelDelta > 0) {
+          boxObj.x += 10;
+          boxObj.y += 10;
+        } else {
+          boxObj.x -= 10;
+          boxObj.y -= 10;
+        }
+
+        //赋值
+        oBox.style.width = boxObj.x + "px";
+        oBox.style.height = boxObj.y + "px";
+      }; */
+
+      //给oBox绑定滚轮滚动事件(火狐版本)
+      oBox.addEventListener("DOMMouseScroll",function (e) {
+        if (e.detail > 0) {
+          boxObj.x -= 10;
+          boxObj.y -= 10;
+        } else {
+          boxObj.x += 10;
+          boxObj.y += 10;
+        }
+
+        //赋值
+        oBox.style.width = boxObj.x + "px";
+        oBox.style.height = boxObj.y + "px";
+      })
+
+      /* //封装一个函数,用来实现滚轮事件
+      function wheelScroll(e) {
+        if (e.wheelDelta) {
+          //谷歌浏览器
+          if (e.wheelDelta > 0) {
+            boxObj.x += 10;
+            boxObj.y += 10;
+          } else {
+            boxObj.x -= 10;
+            boxObj.y -= 10;
+          }
+        } else {
+          //火狐浏览器
+          if (e.detail > 0) {
+            boxObj.x -= 10;
+            boxObj.y -= 10;
+          } else {
+            boxObj.x += 10;
+            boxObj.y += 10;
+          }
+        }
+
+        //赋值
+        oBox.style.width = boxObj.x + "px";
+        oBox.style.height = boxObj.y + "px";
+      }
+
+      oBox.onmousewheel = wheelScroll;
+      oBox.addEventListener("DOMMouseScroll",wheelScroll); */
+    </script>
+  </body>
+</html>

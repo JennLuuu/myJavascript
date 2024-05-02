@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>dowhile练习2</title>
+  </head>
+  <body>
+    <input type="text" placeholder="请输入一个正整数">
+    <button>求和</button>
+    <div class="show"></div>
+    <script>
+        
+      /*  
+            4.编写一个程序，使用do-while循环，输入一个正整数n,然后求1到n的和，并将结果输出到屏幕上。
+      */
+      //输入一个正整数n, 所以需要有一个输入框,要规定输入的值是正整数
+        var oIpt = document.querySelector("input");
+        var oBtn = document.querySelector("button");
+        var oShow = document.querySelector(".show");
+
+        //绑定点击事件
+        oBtn.onclick = function(){
+            //获取输入的值
+            var iptValue = +oIpt.value;
+
+            //错误优先处理,当输入的值为NaN和负数时
+            if(!iptValue || iptValue < 0){
+                alert("非法输入,请输入正整数");
+                oIpt.value = "";
+
+                return;
+            }
+
+            //累加求和,输入一个n,算从1-n累加的和
+            var sum = 0;
+            var count = 1;
+            do{
+                sum += count;
+                count++;
+            }while(count <= iptValue)
+
+            console.log(sum);
+            oShow.textContent = sum;
+        }
+
+
+        //5.编写一个程序，使用do-whil循环，输入一组数字，直到输入0为止，然后将输入的数字求和并输出结果到屏幕上。
+    </script>
+  </body>
+</html>

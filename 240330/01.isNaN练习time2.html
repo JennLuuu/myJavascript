@@ -1,0 +1,47 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-03-30 16:53:48
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-03-31 21:21:40
+ * @FilePath: \MyCode\240330\01.isNaN练习time2.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>isNaN练习time2</title>
+  </head>
+  <body>
+    <input type="text" name="" id="" />
+    <button>检测</button>
+    <script>
+      /* 
+            需求:有一个input框,输入电话号码,点击按钮检测用户输入的是否是纯数字
+
+            思路:
+            1.获取元素
+            2.给按钮绑定点击事件
+            3.获取输入的内容
+            4.在点击事件中判断输入的内容是否是纯数字
+            5.是则提示真棒,否则提示重新输入
+
+            */
+
+      var oIpt = document.querySelector("input");
+      var oBtn = document.querySelector("button");
+
+      oBtn.onclick = function () {
+        var iptValue = oIpt.value;
+
+        if (isNaN(iptValue)) {
+          alert("重新输入,全为数字");
+        } else {
+          alert("真棒!!!");
+        }
+      };
+    </script>
+  </body>
+</html>

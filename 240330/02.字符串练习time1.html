@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>字符串练习time1</title>
+    </head>
+    <body>
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>提交</button>
+
+        <script>
+            /* 
+            需求:用户, 提交, 账号密码的时候，判断是否正确,如果正确则....否则....
+            已知账号是lipeihua  密码是1234561
+
+            思路:
+            1.获取dom元素
+            2.给按钮绑定点击事件
+            3.点击事件中获取输入的内容
+            4.判断账号密码是否正确
+            5.是则...不是则...
+            */
+
+            var oUser = document.querySelector("input[type=text]");
+            var oPass = document.querySelector("input[type=password]");
+            var oBtn = document.querySelector("button");
+
+            oBtn.onclick = function(){
+
+                var userValue = oUser.value;
+                var passValue = oPass.value;
+
+                if(userValue === "lipeihua" && passValue === "1234561"){
+                    console.log("通过");
+                }else{
+                    console.log(userValue,passValue)
+                    oUser.value = "";
+                    oPass.value = "";
+                }
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-12 20:50:44
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-12 20:55:43
+ * @FilePath: \My_JavaScript\240412\06.随机打乱数组.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //封装一个随机数函数
+      function random(n, m) {
+        //n,m  为随机数的范围
+        return Math.floor(Math.random() * (m - n) + n);
+      }
+
+      //遍历扑克牌，（使用两个字符串数组，分别保存花色和点数，再用一个字符串数组保存最后的扑克牌。）
+      function puKePai(huaSe, dianshu) {
+        var puKe = [];
+        var index = 0;
+        for (var i = 0; i < huaSe.length; i++) {
+          for (var j = 0; j < dianshu.length; j++) {
+            puKe[index] = huaSe[i] + dianshu[j];
+            index++;
+          }
+        }
+        return puKe;
+      }
+
+      var huaSe = ["♦", "♥", "♣", "♠"];
+      var dianshu = [
+        "A",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "J",
+        "Q",
+        "K",
+      ];
+
+      var res = puKePai(huaSe, dianshu);
+      console.log(res);
+
+      var luanXuPuKe = res.reduce(function (p, c, index) {
+        //random(0, res.length)生成数组长度范围内的一个随机数
+        //res[random(0, res.length)]以随机数作为index,找到对应的值,将其和当前值c进行位置互换
+        var temp = res[index];
+        res[index] = res[random(0, res.length)];
+        res[random(0, res.length)] = temp;
+
+        return res;
+      }, []);
+
+      console.log(luanXuPuKe);
+    </script>
+  </body>
+</html>

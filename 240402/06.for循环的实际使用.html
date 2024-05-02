@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>for循环的实际使用1</title>
+    </head>
+    <body>
+        <ul>
+            <li>111</li>
+            <li>222</li>
+            <li>333</li>
+            <li>444</li>
+            <li>555</li>
+            <li>666</li>
+            <li>777</li>
+        </ul>
+        <script>
+
+            // 页面上有一个列表,点击li,背景色变红
+
+            //要想能够操作页面结构,首先需要获取到dom元素
+            //想能够操作每一个li,并且不用给每一个li手写点击事件
+            //li是从0开始共有7个,给每一个都绑定事件,所以用for循环,在循环内,给li绑定点击事件
+            //document.querySelectorAll("")能够选中所有的""中的元素
+
+            //获取元素
+            var olis = document.querySelectorAll("li");
+
+            //for循环找到每一个li
+            // .length可以拿到
+            for (var i = 0 ; i < olis.length ; i++ ){
+                olis[i].onclick = function(){
+                    this.style.background = "pink";
+                }
+            }
+
+        </script>
+    </body>
+</html>

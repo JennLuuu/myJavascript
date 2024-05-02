@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>实时拿到表单更改的内容time1</title>
+  </head>
+  <body>
+    <input type="text" class="ipt"/>
+    <div class="con"></div>
+    <script>
+      var oIpt = document.querySelector(".ipt");
+      var oCon = document.querySelector(".con");
+      console.log(oIpt);
+
+      oIpt.oninput = function () {
+        console.log(55);
+        oCon.textContent = this.value;
+      };
+    </script>
+  </body>
+</html>

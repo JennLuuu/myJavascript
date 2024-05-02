@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>质数开关思想time2</title>
+    </head>
+    <body>
+        <script>
+
+            //18. 找出100以内所有的素数（质数）
+
+            //i从2开始,是因为1不是质数
+            for (var i = 2 ; i < 150 ; i++ ){
+                var flag = true;
+                //从2开始,是因为1是任何数的因子,没有算的必要
+                for (var j = 2 ; j < i ; j++ ){
+                    if (i % j === 0) {
+                        //有因子,不是质数,跳出
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    console.log(i + "是质数");
+                }
+            }
+        </script>
+    </body>
+</html>

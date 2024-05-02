@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>reduce()_遍历加累加</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        reduce:
+          * 累加,接受一个回调函数作为参数,再接受一个参数作为累加的初始值
+          * 回调函数参数:
+            - 1: 初始值或者上次累加后的值
+            - 2: 当次遍历数组的值
+            - 3: 当次数组的下标
+            - 4: 原数组的引用
+          * 回调函数要返回一个值,作为下一次遍历时的previous参数
+          * reduce返回最后累加的结果
+      */
+
+      /* var arr = [1, 2, 3, 4, 5, 6];
+
+      var res = arr.reduce(function (p, c) {
+        return p + c;
+      }, 0);
+      console.log(res); */
+
+      //求数组中每一个字符出现的次数
+      /* var arr = ["a", "b", "c", "a", "d", "f", "b", "z", "c", "a", "f"]; */
+
+      //每一个字符出现的次数 --> 用对象储存
+      //往一个对象中重复添加某些元素 --> reduce
+      /* var res = arr.reduce(function (p, c) {
+        //p在第一次进来时,是初始化的空对象
+        //c为当前进来的数组元素
+        if (p[c]) {
+            p[c]++;
+        }else{
+            p[c] = 1;
+        }
+        //p[c] ? p[c]++ : (p[c] = 1);
+        return p;
+      }, {});
+      console.log(res); */
+
+      //已知用户请求地址:
+      //http://127.0.0.1:8000?user=zhansgan&pass=123&sex=nan&age=20把地址中的查询字符串数据整理出来
+      var str = "http://127.0.0.1:8000?user=zhansgan&pass=123&sex=nan&age=20";
+      str.split("?");//['http://127.0.0.1:8000', 'user=zhansgan&pass=123&sex=nan&age=20']
+      //console.log(str.split("?"));
+      var msgArr = str.split("?")[1].split("&");//['user=zhansgan', 'pass=123', 'sex=nan', 'age=20']
+      //console.log(str.split("?")[1].split("&"));
+
+      //想要将msgArr遍历,将每一项都以=拆分,然后将每一项的第一个元素放进对象中
+      //累加
+      var res3 = msgArr.reduce(function(p,c){
+        //console.log(c.split("=")[0]);
+        //console.log(c.split("=")[1]);
+        p[c.split("=")[0]] = c.split("=")[1];
+
+        return p;
+      },{});
+      console.log(res3);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>slice方法截取数组</title>
+    </head>
+    <body>
+        <script>
+           var arr = ["a", "b", "c", "d", "e", "f", "g"];
+           console.log(arr);
+           var newArr = arr.slice(2, 4);
+           console.log(newArr);
+
+           //负数的使用
+           var newArr = arr.slice(2, -2);
+           console.log(newArr);
+        </script>
+    </body>
+</html>

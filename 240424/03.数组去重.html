@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>数组去重</title>
+    </head>
+    <body>
+        <script>
+            var arr = ["a","b","h","f","b","h","f","t","p","o"]
+
+            var res = arr.reduce(function(p,c){
+                if (!p.includes(c)) {
+                    p.push(c);
+                }
+                return p;
+            },[])
+
+            console.log(arr);
+            console.log(res);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+            function to2B(n) {
+                //二进制，取余2
+                //创建一个新数组，用来放每次取余得到的余数
+                var arr = [];
+
+                //只要n大于0，就可以继续取余
+                while (n > 0) {
+                    //一进来，先算一次余数
+                    var yuShu = n % 2;
+
+                    //如何拿到下一个值，接着算余数
+                    //每次的取余，都是对于上一次的商取余
+                     n = parseInt(n / 2);
+
+                     //将拿到的余数放进数组中
+                     //计算二进制，得到的余数是从下往上看顺序的
+                     //二进制是从右往左计数，所以每次往数组中压入数据的时候，都是在原数组前面添加数据
+                     arr.unshift(yuShu);
+                }
+
+                return arr;
+            }
+
+            var res = to2B(13);
+            console.log(res);
+        </script>
+    </body>
+</html>

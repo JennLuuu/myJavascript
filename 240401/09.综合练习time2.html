@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>综合练习time2</title>
+  </head>
+  <body>
+    <input type="text">
+    <button>检测</button>
+    <script>
+      /* 
+        用户输入一个年份,点击判断是闰年还是非闰年
+        //年份能够被4整除且不能被100整除，或者年份能够被400整除
+
+        思路:
+        1. 获取dom元素
+        2. 给按钮绑定点击事件
+        3. 获取输入的内容
+        4. 判断是否是闰年
+        5. 是则alert闰年,否则alert非闰年
+        
+            */
+        var oIpt = document.querySelector("input");
+        var oBtn = document.querySelector("button");
+
+        oBtn.onclick = function(){
+            var year = +oIpt.value;
+
+            //判断输入的是否是纯数字
+            if (!year) {
+                alert("警告:不可以输入非法字符!")
+                oIpt.value = "";
+
+                return;
+            }
+
+            if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+                alert("是闰年哦");
+                oIpt.value = "";
+            }else{
+                alert("不是闰年哦");
+                oIpt.value = "";
+            }
+        }
+    </script>
+  </body>
+</html>

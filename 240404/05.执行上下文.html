@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>执行上下文</title>
+    </head>
+    <body>
+
+        <script>
+
+            /* 
+            执行上下文(Execution Context):
+            * js是一段一段解析的
+            * js执行的代码分为两种类型:全局代码片段,局部代码片段(函数代码片段)
+            * js在执行某个代码片段之前,会进行一个准备工作,这个准备工作就成为执行上下文
+            * context包括:1.在内存中开辟一块空间;2.创建变量对象;3.确定this指向;4.确定作用域链
+            * js执行每一段代码,都会创建一一对应的context,所以在脚本中,就可能会同时存在多个context
+            * 因为有太多的context,js就创建了一个context栈(stack),用来管理context
+            * 当js开始解析的时候,最先遇到的是全局代码段,也就生成相应的context,并压入栈中,context只有代码段完全执行结束才会被从栈中弹出,所以,全局代码片段的context,一定是在页面关闭的时候才会从栈中弹出
+            * 每当执行一个代码段,就会创建对应的context,并压入栈中,直到代码段完全执行结束,才会从栈中弹出
+            */
+        </script>
+    </body>
+</html>

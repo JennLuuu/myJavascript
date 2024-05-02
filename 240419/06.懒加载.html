@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>图片的懒加载</title>
+    <style>
+      #box {
+        width: 1000px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        justify-content: space-around;
+      }
+      #box img {
+        width: 480px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <img
+        src="https://www.bing.com/th/id/OGC.b3221b81661167bc429aea99e2586aee?pid=1.7&rurl=http%3a%2f%2fwww.yilewan.com%2fresource%2fetpResource%2fimages%2floading.gif&ehk=8SSR9kfkOSDuMCmwSXdkARULQTCCBAfqtvnDIdciFyU%3d"
+        data-orz="https://img2.baidu.com/it/u=1503837862,726956960&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=889"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse2-mm.cn.bing.net/th/id/OIP-C.12MmFldI3GfBRH9xld_EogAAAA?w=116&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse4-mm.cn.bing.net/th/id/OIP-C.73dsUvZNZabkIxHSxeitFAHaHa?w=211&h=211&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse2-mm.cn.bing.net/th/id/OIP-C.hbbK561-aQqMzV2XLKx7uQHaHN?w=217&h=211&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse3-mm.cn.bing.net/th/id/OIP-C.Z2CBiXlMZg_2nSkwDdYyAwHaHa?w=215&h=215&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse2-mm.cn.bing.net/th/id/OIP-C.RTTvtm33EaoaBgrdNGwY3wHaHa?w=189&h=189&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse4-mm.cn.bing.net/th/id/OIP-C.upOHpSuFKBAdGs_rBr43JQHaEH?w=300&h=186&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse2-mm.cn.bing.net/th/id/OIP-C.9_Rt9fht0i2z0tqIzlb_0AHaHZ?w=181&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse4-mm.cn.bing.net/th/id/OIP-C.7RLATwHK5ptR6h16rC6ETwHaHa?w=187&h=187&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse4-mm.cn.bing.net/th/id/OIP-C.F67P2lh60-ejQ6UDtylrjQHaHa?w=186&h=187&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse4-mm.cn.bing.net/th/id/OIP-C.Z6_lfWXJiH_uKGazQfqp8wHaHa?w=209&h=209&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse4-mm.cn.bing.net/th/id/OIP-C.AR2Pm2o90Pl2HsY8K_B1iQHaHa?w=194&h=194&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse2-mm.cn.bing.net/th/id/OIP-C.oxsqEGhZwrxgbrhao3ODRwHaGQ?w=203&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse1-mm.cn.bing.net/th/id/OIP-C.oyx380R_q6NI9GJhOiGtBQHaHa?w=171&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse4-mm.cn.bing.net/th/id/OIP-C.j7tliIy9FeiVw6IIgPcyyQHaHa?w=190&h=190&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse2-mm.cn.bing.net/th/id/OIP-C.6aQXhBvB0gWqhIkJKzP5sQHaFQ?w=281&h=199&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse3-mm.cn.bing.net/th/id/OIP-C.G0esS9GxeH1XrYwxgeEHbAHaHa?w=182&h=185&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+        src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+        data-orz="https://tse4-mm.cn.bing.net/th/id/OIP-C.5dwO5VKet_iI2XJ8Su2xQwHaHa?w=188&h=188&c=7&r=0&o=5&dpr=2&pid=1.7"
+        alt=""
+      />
+      <img
+      src="https://www.bing.com/th/id/OGC.b3221b81661167bc429aea99e2586aee?pid=1.7&rurl=http%3a%2f%2fwww.yilewan.com%2fresource%2fetpResource%2fimages%2floading.gif&ehk=8SSR9kfkOSDuMCmwSXdkARULQTCCBAfqtvnDIdciFyU%3d"
+      data-orz="https://img2.baidu.com/it/u=1503837862,726956960&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=889"
+      alt=""
+    />
+    <img
+      src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+      data-orz="https://tse2-mm.cn.bing.net/th/id/OIP-C.12MmFldI3GfBRH9xld_EogAAAA?w=116&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
+      alt=""
+    />
+    <img
+      src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+      data-orz="https://tse4-mm.cn.bing.net/th/id/OIP-C.73dsUvZNZabkIxHSxeitFAHaHa?w=211&h=211&c=7&r=0&o=5&dpr=2&pid=1.7"
+      alt=""
+    />
+    <img
+      src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+      data-orz="https://tse2-mm.cn.bing.net/th/id/OIP-C.hbbK561-aQqMzV2XLKx7uQHaHN?w=217&h=211&c=7&r=0&o=5&dpr=2&pid=1.7"
+      alt=""
+    />
+    <img
+      src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+      data-orz="https://tse3-mm.cn.bing.net/th/id/OIP-C.Z2CBiXlMZg_2nSkwDdYyAwHaHa?w=215&h=215&c=7&r=0&o=5&dpr=2&pid=1.7"
+      alt=""
+    />
+    <img
+      src="https://www.bing.com/th/id/OGC.85a8f6798d84eff917c6307b98bbf82f?pid=1.7&rurl=http%3a%2f%2fimg-blog.csdnimg.cn%2f20210622113522288.gif&ehk=YOcQIXCRAx%2bfwDLaUUUvAEI5yRxT2j3Fv9WSTlTwZuI%3d"
+      data-orz="https://tse2-mm.cn.bing.net/th/id/OIP-C.RTTvtm33EaoaBgrdNGwY3wHaHa?w=189&h=189&c=7&r=0&o=5&dpr=2&pid=1.7"
+      alt=""
+    />
+      
+    </div>
+    <script>
+        //封装函数
+        function getEleToDoc(ele) {
+          var initELe = ele;
+          var result = {
+            left: 0,
+            top: 0,
+          };
+
+          //判断元素到文档的距离
+          while (initELe) {
+            if (initELe === ele) {
+              result.left += initELe.offsetLeft;
+              result.top += initELe.offsetTop;
+            } else {
+              result.left += initELe.offsetLeft + initELe.clientLeft;
+              result.top += initELe.offsetTop + initELe.clientTop;
+            }
+            initELe = initELe.offsetParent;
+          }
+          return result;
+        }
+
+        var oImgs = document.querySelectorAll("#box img");
+
+        window.onload = window.onscroll = function () {
+          //遍历图片判断每一个临界条件是否符合
+          oImgs.forEach(function (item) {
+            //1. 获取item到文档边缘的距离
+            var itemToDoc = getEleToDoc(item).top;
+
+            //2. 获取滚动条滚过去的距离
+            var scrollTop = window.pageYOffset;
+
+            //3. 获取视口的高度
+            var viewHeight = document.documentElement.clientHeight;
+
+            //判断
+            if (itemToDoc < scrollTop + viewHeight) {
+                console.log(item.src);
+              item.src = item.dataset.orz;
+            }
+          });
+        };
+      </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>十进制转任意进制</title>
+    </head>
+    <body>
+        <script>
+            //传入两个参数，第一位是要转换的参数，第二位是要转的进制
+            function to2B(n, m) {
+                var arr = [];
+
+                //规定输入的进制数不能高于36进制
+                if (m < 2 || m > 36) {
+                    alert("进制数输入有误，请重新输入")
+                }
+
+                //创建一个字符串，为了能让无论什么进制，它的余数都有一个对应的值
+                var str = "0123456789abcdefghijklmnopqrstuvwxyz";
+
+                //余数是从0开始，到35，字符串中每个字符的下标也是0-35，所以就可以把余数当作下标指针来用
+
+
+                //只要n大于0，就可以继续取余
+                while (n > 0) {
+                    //一进来，先算一次余数
+                    var yuShu = n % m;
+
+                     n = parseInt(n / m);
+
+                     arr.unshift(str[yuShu]);
+                }
+
+                return arr;
+            }
+
+            var res = to2B(255,16);
+            console.log("res是", res);
+        </script>
+    </body>
+</html>

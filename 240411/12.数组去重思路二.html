@@ -1,0 +1,61 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-11 20:51:11
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-12 07:57:31
+ * @FilePath: \My_JavaScript\240411\12.数组去重思路二.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>数组去重思路二</title>
+  </head>
+  <body>
+    <script>
+      /* //思路2.1:遍历数组每一个值,看后边有没有这个值,如果没有就添加到新数组中(开关思想)
+            var arr = ["a", "b", "a", "c", "a", "d", "z", "c", "x", "z"];
+            //定义一个新数组
+            var newArr = []  ;
+            //遍历数组
+            for (var i = 0 ; i < arr.length ; i++ ){
+                //开关思想,拟定进来的每个arr[i]都没有重复的
+                var flag = true;
+                //内层遍历数组,看后面是否有和arr[i]重复的值
+                for (var j = i+1 ; j < arr.length ; j++ ){
+                    if (arr[i] === arr[j]) {
+                        //如果有重复的,则给标志flag赋值为false,并且跳出循环
+                        flag = false;
+                        break;
+                    }
+                }
+                //如果经过if判断后,flag还是true,说明后面就没有和arr[i]重复的,就可以赋给新数组
+                if (flag) {
+                    newArr.push(arr[i])
+                }
+            }
+            console.log(newArr); */
+
+      //思路2.2:遍历数组每一个值,看后边有没有这个值,如果没有就添加到新数组中(continue+label,有重复直接跳出外循环)
+      var arr = ["a", "b", "a", "c", "a", "d", "z", "c", "x", "z"];
+      //定义一个新数组
+      var newArr = [];
+      //遍历数组
+      outer:for (var i = 0; i < arr.length; i++) {
+        //内层遍历数组,看后面是否有和arr[i]重复的值
+        for (var j = i + 1; j < arr.length; j++) {
+            //如果有重复的,则直接跳出到外部循环,根本不会执行剩下的内部循环,以及内部循环后面的代码
+          if (arr[i] === arr[j]) {
+            continue outer;
+          }
+        }
+        //内部循环全走完了,依旧没有跳出到outer,说明就没有重复值,就可以将arr[i]赋给新数组
+        newArr.push(arr[i]);
+      }
+      console.log(newArr);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-17 18:20:27
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-19 09:41:11
+ * @FilePath: \My_JavaScript\240417\03.侧边栏移出.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>侧边栏移出</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        /* padding: 20px 20px; */
+        margin: 50px;
+        /* 开启BFC */
+        overflow: hidden;
+      }
+      .outer {
+        width: 60px;
+        float: right;
+        display: flex;
+        flex-direction: row-reverse;
+
+        /* overflow: hidden; */
+
+        position: relative;
+      }
+      .outer p {
+        width: 60px;
+        height: 60px;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 60px;
+        background-color: rgb(8, 188, 253);
+        z-index: 1;
+      }
+      .outer .inner {
+        width: 140px;
+        height: 60px;
+        color: #fff;
+        font-size: 25px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 60px;
+        background-color: rgb(196, 16, 122);
+        position: absolute;
+        right: -80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="outer">
+        <p>反馈</p>
+        <div class="inner">我的反馈</div>
+      </div>
+    </div>
+    <script>
+      var oOuter = document.querySelector(".outer");
+      var oP = document.querySelector(".outer p");
+      var oInner = document.querySelector(".inner");
+
+      //想要inner的移动是一个动画,套个定时器,动画是在事件触发的时候才会显示
+
+      //初始化
+      var timer = null;
+      //inner移动的起始位置,之后就是每次移动的起始位置
+      var start = -80;
+
+      /* //开关思想
+      var flagX = 1; */
+
+      //p标签绑定移入事件:鼠标移入控制inner的展示
+      oOuter.onmouseenter = function () {
+        //防止多次触发事件同时生成多个定时器
+        clearInterval(timer);
+
+        timer = setInterval(function () {
+          console.log(111);
+          // start += flagX;
+          start++;
+          //判断定时器清除的条件----动画截至的条件
+          if (start >= oP.offsetWidth) {
+            start = oP.offsetWidth;
+            clearInterval(timer);
+            //flagX = -flagX;
+          }
+            oInner.style.right = start + "px";
+          
+        }, 1);
+      };
+      //p标签绑定移出事件:鼠标移出控制inner的隐藏
+      oOuter.onmouseleave = function () {
+        //防止多次触发事件同时生成多个定时器
+        clearInterval(timer);
+
+        timer = setInterval(function () {
+          console.log(222);
+          //start += flagX;
+          start--;
+          //判断定时器清除的条件----动画截止的条件
+          if (start <= -81) {
+            start = -81;
+            clearInterval(timer);
+            //flagX = -flagX;
+          }
+            oInner.style.right = start + "px";
+          
+        }, 1);
+      };
+    </script>
+  </body>
+</html>

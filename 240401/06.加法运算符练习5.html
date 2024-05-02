@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>加法运算符练习5</title>
+    </head>
+    <body>
+        <div class="outer">
+            <input type="text">
+            <button>添加</button>
+            <div class="con"></div>
+        </div>
+        
+        <script>
+            /* 
+            需求: 在输入框输入内容,点击按钮,把内容添加到con中
+            思路:
+            1. 获取元素
+            2. 绑定点击事件
+            3. 获取输入的内容
+            4. 将内容添加到con中
+            */
+
+            var oIpt = document.querySelector("input");
+            var oBtn = document.querySelector("button");
+            var oCon = document.querySelector(".con");
+
+            oBtn.onclick = function(){
+
+                var iptValue = oIpt.value;
+
+
+                oCon.textContent += iptValue;
+                oIpt.value = "";
+            }
+
+        </script>
+    </body>
+</html>

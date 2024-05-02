@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>十进制转任意进制time2</title>
+    </head>
+    <body>
+        <script>
+            function turn(n, m) {
+                //一个字符串或数组,用来放十进制转为m进制后的每一位数字
+                var arr = [];
+
+                //错误优先处理
+                if (m < 2 || m >36) {
+                    alert("进制数非法输入,请输入2-36位的进制转换")
+                }
+
+                //先预设一个字符串,用来存放36进制对应的每一位字符
+                var str = "0123456789abcdefghijklmnopqrstuvwxyz";
+
+                
+                while (n > 0) {
+                    //余数为数字对于进制的取余
+                    var yuShu = n % m;
+                    //余数是要放到数组中的数
+                    arr.unshift(str[yuShu]);
+                    //每一次的商是下一次的被除数
+                    //商要进行取整才能进行计算
+                    n = parseInt(n / m);
+                }
+                
+                console.log(arr);
+            }
+            turn(255, 27);
+        </script>
+    </body>
+</html>

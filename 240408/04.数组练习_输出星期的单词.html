@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //4. 输入星期数字 找到对应的英文单词
+      var value = +prompt("请输入数值（0-6）");
+      var weekEng = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+
+      if (!value && value !== 0 || value >= weekEng.length) {
+        alert("非法输入，请重新输入");
+      } else {
+        alert(weekEng[value]);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-10 08:51:50
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-10 08:52:42
+ * @FilePath: \JavaScript\240409\02.数组去重time3.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>数组去重</title>
+    </head>
+    <body>
+        <script>
+            var arr = ["a", "b", "a", "c", "b", "a", "c", "z", "d", "b"];
+            //数组去重后还是一个数组
+            //去重后的元素放进一个新数组中
+            var newArr = [];
+            //给新数组安排一个索引,用来放入数据
+            var index = 0;
+
+            //遍历数组
+            for (var i = 0 ; i < arr.length ; i++ ){
+                //一进来先假定它就是不重复的
+                var flag = true;
+                //遍历新数组,用于和进来的数据进行比较,看newArr中是否有该元素
+                for (var j = 0 ; j < newArr.length ; j++ ){
+                    if (newArr[j] === arr[i]) {
+                        //当它重复时,改成false
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    newArr[index] = arr[i];
+                    index++;
+                }
+            }
+            console.log(arr);
+            console.log(newArr);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>质数的开关思想time3</title>
+    </head>
+    <body>
+        <script>
+            //找出1-100之间所有的质数
+            //质数:除了1和自身以外,没有可以被整除的因子
+
+            for (var i = 2 ; i <= 100 ; i++ ){
+                var flag = true;
+                for (var j = 2 ; j < i ; j++ ){
+                    if (i % j === 0) {
+                        // console.log("不是质数");
+                        flag = false;
+                        break;
+                    }
+                }
+                if(flag){
+                    console.log(i);
+                }
+            }
+        </script>
+    </body>
+</html>

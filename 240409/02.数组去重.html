@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>数组去重</title>
+    </head>
+    <body>
+        <script>
+            /* 
+            数组去重：
+            * 新数组＋开关思想
+
+            */
+            var arr = ["a", "b", "a", "c", "b", "a", "c", "z", "d", "b"];
+            var newArr = [];
+            var index = 0;
+            //遍历arr拿到其中的每一个数
+            for (var i = 0 ; i < arr.length ; i++ ){
+                var flag = true;
+                //遍历newArr，用于遍历新数组中的元素，让其与进来的旧数组元素对比是否有重复，有则跳出，无则赋值放进去
+                //开关思想，一上来就假定是true，如果比较完flag依旧为true，才将值赋给newArr
+                for (var j = 0 ; j < newArr.length ; j++ ){
+                    if(newArr[j] === arr[i]){
+                        flag = false;
+                        break;
+                    }
+                }
+                //只有newArr中的元素都遍历完，才能知道他到底有没有重复的
+                if (flag) {
+                    newArr[index] = arr[i];
+                    index++;
+                }
+            }
+            console.log(newArr);//打印为空数组
+        </script>
+    </body>
+</html>

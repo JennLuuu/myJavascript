@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>登录练习_prompt_time1</title>
+  </head>
+  <body>
+    <script>
+      /* 
+      一旦进入页面,就弹出两个窗口,分别是用户名和密码
+      我们检测是否正确,如果正确则直接运行,如果不正确则继续弹窗让用户输入
+    
+    */
+      var user = prompt("请输入账号");
+      var pass = prompt("请输入密码");
+
+      //因为我们要循环判断,只要输入的值不对,就会一直弹窗输入,所以这是一个while循环,只要满足条件就一直循环;
+      //用if判断就得无限套判断条件
+      /* if (user === "jenn" && pass === "456") {
+        alert("欢迎您,jenn");
+      } else {
+        console.log("****");
+        var user = prompt("请输入账号");
+        var pass = prompt("请输入密码");
+      } */
+
+      //&&:全真为真,只要有一个假,判断条件就是false,就不会进入循环
+      //||:一真为真,只要有一个为真,判断条件就为true,就进入循环
+      while(user !== "jenn" || pass !== "456"){
+        var user = prompt("请输入账号");
+        var pass = prompt("请输入密码");
+      }
+      alert("欢迎您.jenn")
+    </script>
+  </body>
+</html>

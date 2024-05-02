@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>节流函数</title>
+    </head>
+    <body>
+        <script>
+            function throttle(fn,time) {
+                var lastTime = 0;
+                return function () {
+                    
+                    var nowTime = new Date();
+
+                    //看门狗
+                    if (nowTime-lastTime<time) {
+                        return;
+                    }
+
+                    fn.call(this);
+                }
+            }
+        </script>
+    </body>
+</html>

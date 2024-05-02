@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>冒泡排序</title>
+  </head>
+  <body>
+    <script>
+      var arr = [1, 5, 8, 7, 3, 2, 4, 5, 1, 23, 2, 5, 6];
+      console.log(arr);
+
+      for (var i = 0; i < arr.length - 1; i++) {
+        for (var j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j+1]) {
+            var temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }
+      console.log(arr);
+    </script>
+  </body>
+</html>

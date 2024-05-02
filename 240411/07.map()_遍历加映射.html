@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>map()_遍历加映射出新数组</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        map方法:
+          * 映射数组,遍历数组,接受一个回调函数作为参数
+          * 每次回调函数的返回值,都会放入新数组中
+      
+      */
+      var arr = [
+        {
+          name: "张三1",
+          age: 21,
+        },
+        {
+          name: "张三2",
+          age: 22,
+        },
+        {
+          name: "张三3",
+          age: 12,
+        },
+        {
+          name: "张三4",
+          age: 17,
+        }
+      ];
+
+      var mapArr = arr.map(function (item) {
+        return { name: item.name, age: item.age + 1 };
+      });
+      console.log(mapArr);
+    </script>
+  </body>
+</html>

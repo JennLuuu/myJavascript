@@ -1,0 +1,53 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-08 16:02:11
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-08 16:04:51
+ * @FilePath: \MyCode\JavaScript\240408\01.数组练习_求.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //1. 求数组所有值中的最大值及出现的下标
+      /* function findArrMax(arr) {
+        var max = arr[0];
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] > max) {
+            max = arr[i];
+          }
+        }
+        var arr1 = [max,i];
+        return  arr1;
+      }
+      var arr = [4, 5, 6, 7, 56, 6, 333, 2, 1, 40];
+      var res = findArrMax(arr);
+
+      console.log(res); */
+
+      function findArrMax(arr) {
+        var max = arr[0];
+        var index = 0;
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] > max) {
+            max = arr[i];
+            index = i;
+          }
+        }
+        var arr1 = [max,index];
+        return  arr1;
+      }
+      var arr = [4, 5, 6, 7, 56, 6, 333, 2, 1, 40];
+      var res = findArrMax(arr);
+
+      console.log(res);
+    </script>
+  </body>
+</html>

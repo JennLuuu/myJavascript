@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>回到顶部通用动画版</title>
+        <style>
+            .con {
+              height: 8000px;
+              background-color: beige;
+            }
+            .btn {
+              width: 40px;
+              height: 80px;
+              background-color: olivedrab;
+              color: #fff;
+              border-radius: 9px;
+              position: fixed;
+              right: 20px;
+              bottom: 50px;
+              display: none;
+            }
+          </style>
+    </head>
+    <body>
+        <div class="con">
+            我滚啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦
+          </div>
+          <button class="btn">返回顶部</button>
+          <script>
+            var oBtn = document.querySelector(".btn");
+
+            //判断滚动条位置,决定oBtn是否展示
+            window.onscroll = function(){
+                var scrollTop = window.pageYOffset;
+                if (scrollTop>=700) {
+                    oBtn.style.display = "block";
+                }else{
+                    oBtn.style.display = "none";
+                }
+            }
+
+            //点击回到顶部
+            oBtn.onclick = function(){
+                //起始位置(滚动条当前的位置)
+                var start = window.pageYOffset;
+
+                //结束位置(运动的重点)
+                var end = 0;
+
+                //总共走几步
+                var totalStep = 31;
+
+                //每一步的距离
+                var everyStep = (end-start)/totalStep;
+
+                //初始步数(用来判断是否执行完动画)
+                var startStep = 0;
+
+                //开始动画
+                var timer = setInterval(() => {
+                    startStep++;
+                    if(startStep>=totalStep){
+                        clearInterval(timer);
+                    }
+
+                    //动画每走一步,初始位置start就移动一步的距离
+                    start += everyStep;
+                    window.scrollTo(0,start);
+                }, 10);
+
+            }
+          </script>
+    </body>
+</html>

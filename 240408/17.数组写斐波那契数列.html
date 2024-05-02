@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+        /* 
+        数组写斐波那契数列：
+            要求输出前15个斐波那契数列的值
+        */
+       var fibList = [1, 1];
+       for (var i = 0 ; i < 15 ; i++ ){
+        fibList[i] = fibList[i - 1] + fibList[i - 2];
+       }
+
+       console.log(fibList);
+        </script>
+        
+         
+    </body>
+</html>

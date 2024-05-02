@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>查找数组中是否包含某个字符/字符串</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        includes方法:
+          * 用来判断某个元素是否在数组中存在
+          * 如果存在则返回true,否则返回false
+          * 判断是全等判断,对象的比较都是地址的比较永远为false
+      */
+
+      var arr = [1, 2, 3, 4, 5, {}];
+      console.log(arr.includes(4));
+      console.log(arr.includes({}));//false
+      console.log( arr.indexOf(6));
+     
+    </script>
+  </body>
+</html>

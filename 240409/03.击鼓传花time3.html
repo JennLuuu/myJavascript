@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>击鼓传花time3</title>
+  </head>
+  <body>
+    <script>
+      /*
+      击鼓传花
+      有n个人，从头开始击鼓传花，每次传递m次，鼓停后，拿到花的人被淘汰，看最后的幸运儿是谁
+
+      翻译:
+      一个数组,有n个数据,从头开始遍历,找到第m位时,删除该元素,直至数组中只剩最后一位
+      */
+
+      function jiGuChuanHua(n, m) {
+          var arr = [];
+
+          //将n个数据放入数组中
+          for (var i = 1 ; i <= n ; i++ ){
+              arr.push(i);
+          }
+          console.log(arr);
+
+          while(arr.length > 1){
+              //遍历数组,遍历m次
+            for (var j = 0 ; j < m ; j++ ){
+                arr.push(arr.shift());
+            }
+            arr.shift();
+            console.log(arr);
+          }
+          return arr[0];
+
+      }
+
+      var res = jiGuChuanHua(10, 4);
+      console.log(res);
+    </script>
+  </body>
+</html>

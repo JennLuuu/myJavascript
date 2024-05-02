@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>回到顶部动画版</title>
+    <style>
+      .con {
+        height: 8000px;
+        background-color: beige;
+      }
+      .btn {
+        width: 40px;
+        height: 80px;
+        background-color: olivedrab;
+        color: #fff;
+        border-radius: 9px;
+        position: fixed;
+        right: 20px;
+        bottom: 50px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      我滚啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦
+    </div>
+    <button class="btn">返回顶部</button>
+    <script>
+      /*
+        √设置con的高度,撑开滚动条
+        回到顶部按钮先隐藏display:none,达到条件后再显示出来display:block
+        条件:滚动到二分之一视口高度时,顶部按钮出现
+        点击按钮匀速丝滑回到顶部,套在定时器里面setInterval
+        返回顶部,就是操作滚动条的高度匀速减少
+        定时器里:拿到距离文档顶部的高度,拿到视口的高度,
+        */
+
+      //获取元素
+      var oCon = document.getElementsByClassName("con");
+      var oBtn = document.querySelector(".btn");
+
+      //初始化滚动条滚动的距离
+      var scrollValue = 0;
+      //绑定滚动事件
+      window.onscroll = function () {
+        //当窗口滚动时,拿到滚动的距离
+        // console.log("窗口的滚动条滚动了");
+
+        //获取元素滚动条滚动的值
+        scrollValue = document.documentElement.scrollTop;
+        // console.log(scrollValue);
+
+        //判断是否符合要显示出现返回顶部按钮的条件
+        if (scrollValue > 500) {
+          oBtn.style.display = "block";
+        } else {
+          oBtn.style.display = "none";
+        }
+      };
+
+      var timer = null;
+      //按钮绑定点击事件:返回顶部
+      oBtn.onclick = function () {
+        clearInterval(timer);
+        // console.log("返回");
+        // console.log(scrollValue);
+
+        //丝滑匀速返回,放在setInterval中,并每次进来先清除上次的定时器
+
+        timer = setInterval(function () {
+            scrollValue = document.documentElement.scrollTop;
+          //清除定时器
+          if (scrollValue <= 0) {
+            clearInterval(timer);
+          }
+
+          //不能通过对变量操作值来更改
+          document.documentElement.scrollTop -= 30;
+          scrollValue = document.documentElement.scrollTop;
+        //   console.log(scrollValue);
+        }, 50);
+
+      };
+    </script>
+  </body>
+</html>

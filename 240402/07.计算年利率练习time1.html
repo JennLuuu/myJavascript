@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>计算年利率练习time1</title>
+  </head>
+  <body>
+    <input type="text" placeholder="请输入本金" class="benJin"/>
+    <input type="text" placeholder="请输入查询的年利率" class="liXi"/>
+    <button>查询</button>
+    <div class="show"></div>
+    <script>
+      // 用户输入一个年利率为xxx(1.05) 请问一笔本金翻倍需要几年
+
+      var oBenJin = document.querySelector(".benJin");
+      var oLiXi = document.querySelector(".liXi");
+      var oBtn = document.querySelector("button");
+      var oShow = document.querySelector(".show");
+
+
+      oBtn.onclick = function () {
+        //获取用户输入的年利率和本金
+        var benJinValue = +oBenJin.value;
+        var liXiValue = +oLiXi.value;
+        //定义一个变量,用于存放翻倍后的金额
+        var doublePrice = benJinValue * 2;
+        //定义一个变量,用于存放年数
+        var count = 0;
+
+        //错误优先处理,当输入的值为NaN和负数时
+      if (!benJinValue || benJinValue < 0 || !liXiValue || liXiValue<0) {
+          alert("非法输入,请输入正确的数值");
+          oBenJin.value = "";
+          oLiXi.value = "";
+
+          return;
+        }
+
+        //当年的本金 = 去年本金 * 年利率
+        while(benJinValue <= doublePrice){
+            benJinValue *= liXiValue;
+            count++;
+        }
+        console.log(benJinValue,liXiValue,count);
+        oShow.textContent = "需要" + count + "年能够翻倍";
+      }
+    </script>
+  </body>
+</html>

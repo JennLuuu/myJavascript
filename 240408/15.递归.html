@@ -1,0 +1,69 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-09 07:09:40
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-09 07:33:09
+ * @FilePath: \MyCode\JavaScript\240408\15.递归.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //递归函数say yes
+      /* function say() {
+        var value = prompt("say yes");
+        if (value === "yes") {
+          alert("oh hi,YES!");
+        } else {
+          say();
+        }
+      }
+      say(); */
+
+      //递归函数写登录案例
+      /* function login() {
+        var user = prompt("请输入用户名");
+        var password = prompt("请输入密码");
+        if (user === "jenn" && password === "333") {
+          alert("欢迎您，jenn");
+        } else {
+            login();
+        }
+      }
+
+      login(); */
+
+      //求传入数字的阶乘
+      /* function jieCheng(n) {
+        if (n < 1) {
+            return 1;
+        }
+        var res = n * jieCheng(n-1);
+        return res;
+      }
+
+      var value = jieCheng(10);
+      console.log(value); */
+
+      //求斐波那契数列（第n位的斐波那契数）
+      function getFib(n) {
+        if (n === 1 || n === 2) {
+            return 1;
+        }
+        
+        var nFeibo = getFib(n-1) + getFib(n-2);
+        return nFeibo;
+      }
+
+      var res = getFib(20);
+      console.log(res);
+    </script>
+  </body>
+</html>

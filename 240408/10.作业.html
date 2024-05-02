@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //访问数组中的第一个元素。
+      var arr = [5, 4, 6, 8, 9, 0, 1, 2, 7, 3];
+      /* var firstNum = arr[0];
+      console.log("firstNum", firstNum); */
+
+      //访问数组中的最后一个元素。
+      /* var lastNum = arr[arr.length - 1];
+      console.log("lastNum", lastNum); */
+
+      //将数组中的第一个元素修改为 "Hello"。
+      /* arr[0] = "Hello";
+      console.log("arr为", arr); */
+
+      //将数组中的最后一个元素修改为 "World"。
+      /* arr[arr.length - 1] = "World";
+      console.log("arr为", arr); */
+
+      //在数组的末尾添加一个元素 "JavaScript"。
+      /* arr[arr.length] = "JavaScript";
+      console.log("arr为", arr); */
+
+      //在数组的开头添加一个元素 "Hello"。
+      //方法一：
+      /* for (var i = 0; i < arr.length ; i++) {
+        arr[arr.length - i] = arr[arr.length - 1 - i];
+      }
+      arr[0] = "Hello";
+      console.log("arr为", arr); */
+      //方法二：
+      /* for (var i = arr.length ; i >= 0 ; i-- ){
+        arr[i] = arr[i - 1];
+      }
+      arr[0] = "Hello";
+      console.log("arr为", arr); */
+
+      //删除数组中的最后一个元素。
+      //方法一
+      /* delete arr[arr.length-1];
+      arr.length = arr.length-1;
+      console.log("arr为", arr); */
+
+      //方法二
+      /* arr.length = arr.length-1;
+      console.log("arr为", arr); */
+
+      //删除数组中的第一个元素。
+      //delete arr[0];
+      /* for (var i = 0 ; i < arr.length ; i++ ){
+        arr[i] = arr[i + 1];
+      }
+      arr.length = 9;
+      console.log("arr为", arr); */
+
+      //找到一个数组中的所有偶数元素。
+      /* var newArr = [];
+      var index = 0;
+      for (var i = 0 ; i < arr.length ; i=i+2 ){
+        newArr[index] = arr[i];
+        index++;
+      }
+      console.log(newArr); */
+
+      var arr1 = [5, 4, 6, 8, 9, 0, 6, 8, 7, 5];
+
+      //将一个数组中的所有元素去重。
+      //方法一
+      /* for (var i = 0; i < arr1.length; i++) {
+          for (var j = 0; j < arr1.length; j++) {
+            if (arr1[j] === arr1[i] && j !== i) {
+              delete arr1[j];
+            }
+          }
+        }
+      console.log(arr1); */
+
+      //方法二
+      /* var arr1 = [5, 4, 6, 8, 9, 0, 6, 8, 7, 5];
+      var newArr = [];
+      // 遍历arr1
+      for (var i = 0; i < arr1.length; i++) {
+        // 用于比较
+        for (var j = 0; j < newArr.length; j++) {
+          if (arr1[i] === newArr[j]) {
+            break;
+          }
+        }
+        if (newArr.length === j) {
+            newArr[newArr.length] = arr1[i];
+        }
+      } */
+      
+      /*错误实例 
+      var index = 0;
+      outer: for (var i = 0; i < arr1.length; i++) {
+        inner: for (var j = 0; j < arr1.length; j++) {
+          if (arr1[i] === arr1[j]) {
+                break inner;
+            }
+          if (arr1[i] !== arr1[j]) {
+            if (newArr[index] !== arr1[j]) {
+              newArr[index] = arr[j];
+              index++;
+            }
+          }
+        }
+      }
+      console.log(newArr); */
+
+      //找到每一个元素出现的次数
+      /* for (var i = 0; i < arr1.length; i++) {
+        var count = 1;
+        for (var j = 0; j < arr1.length; j++) {
+          if (arr1[j] === arr1[i] && j !== i) {
+            count++;
+          }
+        }
+        console.log("arr1[i] =" + arr1[i], count);
+      }
+      console.log(arr1); */
+    </script>
+  </body>
+</html>

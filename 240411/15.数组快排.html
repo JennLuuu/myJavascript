@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>数组快排</title>
+    </head>
+    <body>
+        
+        <script>
+            function kuaiPai(arr) {
+                //遍历数组,拿到随便一个值,和其比较,比它小的放左边数组,比他大的放右边数组,最后将三个部分数组拼接
+
+                //确定结束条件
+                if (arr.length <= 1) {
+                    return arr;
+                }
+                
+                var left = [];
+                var right = [];
+
+                //找一个基准值
+                var base = arr.shift();
+
+                //和基准值比较
+                arr.forEach(function(item) {
+                    if (item < base) {
+                        left.push(item);
+                    }else{
+                        right.push(item);
+                    }
+                    //console.log(left,right);
+                });
+                //合并数组,将其返回
+                return kuaiPai(left).concat(base,kuaiPai(right));
+            }
+
+            var arr = [7, 4, 5, 6, 9, 8, 5, 9, 3, 4, 5, 9, 0, 1];
+            var res = kuaiPai(arr);
+            console.log(res);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>定时器做动画</title>
+    <style>
+      .con {
+        width: 100px;
+        height: 100px;
+        background-color: palevioletred;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">让它跑起来</button>
+    <div class="con">我会跑啊跑啊跑啊</div>
+    <script>
+      
+      //获取元素
+      var oCon = document.querySelector(".con");
+      var oBtn = document.querySelector(".btn");
+
+      //初始化timerID
+      var timer = null;
+      //初始化当前位置
+      var translateInit = 0;
+
+
+      //绑定点击事件:点击按钮让div跑起来
+      oBtn.onclick = function () {
+
+        //写了定时器一定要想清除定时器,由于是想div能够平稳的移动,不会因为点击次数增多,定时器增多而变速,所以每次定时器进来都要清除上一个定时器
+        clearInterval(timer);
+
+        timer = setInterval(() => {
+            
+          //间歇定时器一启动,就要让translateInit一点点增加
+          translateInit+=3;
+
+          //条件判断的是位移的值,位移是由定时器实现的,所以判断也应该是在定时器内
+          if (translateInit >= 1000) {
+            translateInit = 1000;
+            clearInterval(timer);
+          }
+
+          //将改变的样式给到页面元素上
+          oCon.style.transform = "translateX(" + translateInit + "px)";
+        }, 20);
+      };
+    </script>
+  </body>
+</html>

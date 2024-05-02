@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>加法运算符练习4</title>
+    </head>
+    <body>
+        <button class="btn">点击每次累加2</button>
+        <p class="value">0px</p>
+        <script>
+        /*  需求:点击btn 让value的值每次累加2
+            思路:
+            1. 获取dom元素;
+            2. 绑定点击事件;
+            3. 获取p的值;
+            4. 累加;
+            5. 累加的值给到页面;
+            
+        */
+        // 1. 获取dom元素;
+        var oBtn = document.querySelector("button");
+        var pValue = document.querySelector("p");
+
+        // 3. 获取p的值;
+        var count = 0;
+
+        // 2. 绑定点击事件;
+        oBtn.onclick = function(){
+            
+            // 4. 累加;
+            count += 2 ;
+            // 5. 累加的值给到页面;
+            pValue.textContent = count + "px";
+
+        }
+
+        </script>
+    </body>
+</html>

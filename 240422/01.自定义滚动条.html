@@ -1,0 +1,100 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-22 09:51:47
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-22 19:25:55
+ * @FilePath: \My_JavaScript\240422\01.自定义滚动条-布局.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>自定义滚动条</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        /* 清除默认滚动条 */
+        overflow: hidden;
+        height: 100%;
+      }
+      #slider {
+        width: 40px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: #ddd;
+      }
+      #box {
+        width: 100%;
+        height: 60px;
+        font-size: 13px;
+        background-color: hotpink;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="con"></div>
+    <div id="slider">
+      <div id="box">滚动条</div>
+    </div>
+
+    <script>
+      var oCon = document.querySelector("#con");
+      var oBox = document.querySelector("#box");
+      var oSlider = document.querySelector("#slider");
+      var oHtml = document.documentElement;
+
+      for (var i = 0; i < 500; i++) {
+        oCon.innerHTML += i + "<br/>";
+      }
+
+      //自定义滑块高度(视口/文档 = 滑块/容器高度)(滑块 = 视口/文档 *容器高度)
+      //得到的比例其实是公共比例(滑块剩余距离/文档剩余距离)也是这个比例
+      var scale = oCon.offsetHeight / oSlider.clientHeight;
+      oBox.style.height = oHtml.clientHeight / scale + "px";
+
+      //拖动滚动条的滑块
+      oBox.onmousedown = function (e) {
+        e.preventDefault();
+        var mouseToBox = e.offsetY;
+
+        //设置鼠标移动事件
+        //想要在文档中也能让鼠标移动触发事件,事件就要绑定给document
+        document.onmousemove = function (e) {
+          //获取滑块当前位置
+          var boxPointer = e.clientY - mouseToBox;
+
+          //判断临界值
+          if (boxPointer <= 0) {
+            boxPointer = 0;
+          } else if (boxPointer >= oSlider.clientHeight - oBox.offsetHeight) {
+            boxPointer = oSlider.clientHeight - oBox.offsetHeight;
+          }
+
+          //赋值来移动滑块
+          oBox.style.top = boxPointer + "px";
+
+          //5. 文档位移
+          oCon.style.transform = "translateY(-" + boxPointer*scale + "px)";
+        };
+
+        //鼠标抬起事件
+        document.onmouseup = function () {
+          document.onmousemove = null;
+          document.onmouseup = null;
+        };
+      };
+    </script>
+  </body>
+</html>

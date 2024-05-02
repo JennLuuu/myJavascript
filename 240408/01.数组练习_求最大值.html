@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /* 
+        1. 求数组所有值中的最大值
+        
+
+      
+      */
+      //1. 求数组所有值中的最大值
+      function findArrMax(arr) {
+        var max = arr[0];
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] > max) {
+            max = arr[i];
+          }
+        }
+        return max;
+      }
+      var arr = [4, 5, 6, 7, 56, 6, 333, 2, 1, 40];
+      var res = findArrMax(arr);
+
+      console.log(res);
+    </script>
+  </body>
+</html>

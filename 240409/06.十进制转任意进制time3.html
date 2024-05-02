@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>十进制转任意进制time3</title>
+    </head>
+    <body>
+        <script>
+            function turn(n, m) {
+
+                //错误优先处理
+                if (m < 2 || m > 36) {
+                    alert("进制输入有误,请重新输入");
+                }
+                //用来存放余数对应的每一位数
+                var str = "0123456789abcdefhigklmnopqrstuvwxyz";
+                //用来放转换后的数值
+                var arr = [];
+                while (n > 0) {
+                    var yuShu = n % m;
+                    arr.unshift(str[yuShu]);
+                    n = parseInt(n / m);
+                }
+                
+
+                console.log(arr);
+            }
+            
+
+            turn(+prompt("请输入要转换的数字"), +prompt("请输入要依据的进制"));
+        </script>
+    </body>
+</html>

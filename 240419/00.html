@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+            function fn1(){
+                console.log(this);
+            }
+            //fn1()
+
+            var obj = {
+                age:18,
+                sayHi:function(){
+                    console.log(this);
+                }
+            }
+            console.log(obj);
+            obj.sayHi()
+        </script>
+    </body>
+</html>

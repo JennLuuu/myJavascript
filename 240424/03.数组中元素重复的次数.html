@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>数组中元素重复的次数</title>
+    </head>
+    <body>
+        <script>
+            var arr = ["a","b","h","f","b","h","f","t","p","o"]
+
+            var res = {};
+
+            for (var i = 0 ; i < arr.length ; i++ ){
+                if (res[arr[i]]) {
+                    res[arr[i]]++;
+                }else{
+                    res[arr[i]] = 1;
+                }
+                
+            }
+            console.log(res);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>击鼓传花time4</title>
+    </head>
+    <body>
+        <script>
+            /* 
+            有n个猴子,给猴子一个花,每次传递m个人之后,鼓停,拿到花的猴子被淘汰
+
+            翻译:
+            n个猴子----同类型的n个数据
+            一个放了n个元素的数组
+            传递m个----对数组进行m次遍历
+            鼓停,拿到花的被淘汰----到第m个时,对数组当前元素进行处理
+            */
+
+            function jiGuChuanHua(n, m) {
+                var arr = [];
+                //将n个数据放入数组中
+                for (var i = 1 ; i <= n ; i++ ){
+                    arr.push(i);
+                    
+                }
+                console.log(arr);
+
+                //让对数组的处理放进循环中,直到数组中只剩一个元素为止
+                while (arr.length > 1) {
+                    //遍历数组
+                    for (var j = 0 ; j < m ; j++ ){
+                        arr.push(arr.shift());
+                    }
+                    arr.shift()
+                    console.log(arr);
+                }
+                return arr[0];
+            }
+
+            var res = jiGuChuanHua(15, 4);
+            console.log(res);
+        </script>
+    </body>
+</html>

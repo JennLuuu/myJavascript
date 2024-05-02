@@ -1,0 +1,40 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-11 20:05:23
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-11 20:50:56
+ * @FilePath: \JavaScript\240411\11.数组去重的多种方法.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>数组去重思路一</title>
+    </head>
+    <body>
+        <script>
+            var arr = ["a", "b", "a", "c", "a", "d", "z", "c", "x", "z"];
+
+            //思路1:遍历数组每一个值,看后面有没有这个值,如果有就删掉这个值 for-for-if-splice
+            //从头遍历数组,拿到每一个元素
+            for (var i = 0 ; i < arr.length ; i++ ){
+                //从当前元素的后一位开始遍历,遍历后面整个数组
+                for (var j = i + 1 ; j < arr.length ; j++ ){
+                    //如果后面的数组中有和arr[i]相同的,则把arr[i]删掉
+                    if (arr[i] === arr[j]) {
+                        arr.splice(i,1);
+                        //因为你splice会改变元素的下标,只要删掉一个,后面的元素下标都会向前进一位,这样就会导致跳过某些元素
+                        //所以就给她下标回退一格
+                        i--;
+                        //只要有删除,则元素必然重复了,不用再比较了,跳出循环,比下一个元素即可
+                        break;
+                    }
+                }
+            }
+            console.log(arr);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>4位验证码</title>
+  </head>
+  <body>
+    <script>
+      //封装一个随机数函数
+      function random(n, m) {
+        //n,m  为随机数的范围
+        return Math.floor(Math.random() * (m - n) + n);
+      }
+
+      //方法一:
+      //四位验证码每一位都是从0-z的随机数
+      //将可选范围先放进一个容器中
+      /* var str = "0123456789abcdefghijklmnopqrstuvwxyz";
+
+      var res = "";
+      //总共是4位,所以就遍历四次
+      for (var i = 0 ; i < 4 ; i++ ){
+        //每一次都生成一个随机数,然后拼接给res
+        var index = random(0, 36);
+        res += str[index];
+      }
+      
+      console.log(res); */
+
+      //方法二:36进制
+      
+      var res = "";
+      
+      for (var i = 0 ; i < 4 ; i++ ){
+        var num = random(0, 36);
+        res += num.toString(36);
+      }
+      console.log("验证码:",res);
+    </script>
+  </body>
+</html>

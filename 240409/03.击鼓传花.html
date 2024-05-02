@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>击鼓传花</title>
+    </head>
+    <body>
+        <script>
+            /* 
+            击鼓传花
+            有n个人，从头开始击鼓传花，每次传递m次，鼓停后，拿到花的人被淘汰，看最后的幸运儿是谁
+
+            翻译：
+            一个长为n的数组，从头开始遍历，查找m次后，删除当前元素，直至数组只剩一个元素
+            */
+
+            function jiGuChuanHua(n, m) {
+                //定义一个数组，保存所有的猴子编号
+                var arr = [];
+                for (var i = 1 ; i <= n ; i++ ){
+                    arr.push(i);
+                }
+                /* console.log(arr);//[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
+
+                while (arr.length > 1) {
+                    //把每次传递的m个人移到队伍的末尾，这样就方便删除中奖的这个人
+                    for (var j = 0 ; j < m ; j++ ){
+                        arr.push(arr.shift());
+                    }
+                    //移完之后，将中奖的元素淘汰
+                    arr.pop();
+                }
+                //删到最后，数组中会只剩一个元素
+                return arr[0];
+            }
+
+            var res = jiGuChuanHua(10, 6);
+            console.log(res);
+        </script>
+    </body>
+</html>

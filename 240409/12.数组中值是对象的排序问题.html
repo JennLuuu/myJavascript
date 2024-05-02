@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>数组中值是对象的排序time2</title>
+  </head>
+  <body>
+    <button class="hotUp">热度升序排名</button>
+    <button class="hotDown">热度降序排名</button>
+    <button class="priceUp">价格升序排名</button>
+    <button class="priceDown">价格降序排名</button>
+    <div class="con"></div>
+    <script>
+      var arr = [
+        {
+          id: 1,
+          name: "iphone",
+          hot: "1000",
+          price: "11800",
+        },
+        {
+          id: 2,
+          name: "huawei",
+          hot: "2000",
+          price: "8888",
+        },
+        {
+          id: 3,
+          name: "xiaomi",
+          hot: "998",
+          price: "249000",
+        },
+        {
+          id: 4,
+          name: "vivo",
+          hot: "800",
+          price: "6000",
+        },
+      ];
+
+      var oCon = document.querySelector(".con");
+
+      function showList() {
+        var msg = "";
+        for (var i = 0; i < arr.length; i++) {
+          var content = `
+        <p>手机品牌 : ${arr[i].name}</p>
+        <p>手机热度 : ${arr[i].hot}</p>
+        <p>手机价格 : ${arr[i].price}</p>
+        `;
+          msg += content;
+        }
+        oCon.innerHTML = msg;
+      }
+      showList();
+
+      var oHotUp = document.querySelector(".hotUp");
+      var oHotDown = document.querySelector(".hotDown");
+      var opriceUp = document.querySelector(".priceUp");
+      var opriceDown = document.querySelector(".priceDown");
+
+      oHotUp.onclick = function () {
+        arr.sort(function (a, b) {
+          return a.hot - b.hot;
+        });
+        showList();
+      };
+      oHotDown.onclick = function () {
+        arr.sort(function (a, b) {
+          return b.hot - a.hot;
+        });
+        showList();
+      };
+      opriceUp.onclick = function () {
+        arr.sort(function (a, b) {
+          return a.price - b.price;
+        });
+        showList();
+      };
+      opriceDown.onclick = function () {
+        arr.sort(function (a, b) {
+          return b.price - a.price;
+        });
+        showList();
+      };
+    </script>
+  </body>
+</html>

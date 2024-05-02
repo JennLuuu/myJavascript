@@ -1,0 +1,92 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-24 20:07:12
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-24 23:05:51
+ * @FilePath: \My_JavaScript\240424\02.弹幕练习.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>弹幕练习time1</title>
+    <style>
+        .box{
+            width: 800px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .base{
+            position: absolute;
+            left: 800px;
+        }
+    </style>
+  </head>
+  <body>
+    <button class="btn">发布弹幕</button>
+    <div class="box">
+      <div class="barrage"></div>
+    </div>
+  </body>
+  <script>
+    var oBox = document.querySelector(".box");
+    var oBtn = document.querySelector(".btn");
+
+    function Barrage(content) {
+      this.oBar = document.createElement("p");
+      this.oBar.textContent = content;
+      oBox.appendChild(this.oBar);
+      //给元素设置样式
+      this.setStyle();
+    }
+
+    Barrage.prototype.random = function (m, n) {
+      return Math.floor(Math.random() * (n - m) + m);
+    };
+    Barrage.prototype.randomColor = function () {
+      var r = this.random(0, 256);
+      var g = this.random(0, 256);
+      var b = this.random(0, 256);
+      return `rgb(${r},${g},${b})`;
+    };
+    Barrage.prototype.randomTop = function () {
+      return this.random(0, 350);
+    };
+    Barrage.prototype.randomSize = function () {
+      return this.random(12, 40);
+    };
+    Barrage.prototype.randomTime = function () {
+      return this.random(1, 5);
+    };
+    Barrage.prototype.setStyle = function () {
+      this.oBar.classList.add("base");
+      this.oBar.style.color = this.randomColor();
+      this.oBar.style.top = this.randomTop() + "px";
+      this.oBar.style.fontSize = this.randomSize() + "px";
+      this.oBar.style.transition = "all " + this.randomTime() + "s linear";
+      var _this = this;
+
+      //结束定位
+      setTimeout(function(){
+        _this.oBar.style.left = "-100px";
+        _this.remove();
+      },0)
+    };
+
+    Barrage.prototype.remove = function(){
+        this.oBar.ontransitionend = function(){
+            this.remove();
+        }
+    }
+    
+    oBtn.onclick = function(){
+        new Barrage("面向对象真抽象啊")
+    }
+  </script>
+</html>

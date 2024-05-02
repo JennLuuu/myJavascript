@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>回到顶部通用动画版time2</title>
+    <style>
+      .con {
+        height: 8000px;
+        background-color: beige;
+      }
+      .btn {
+        width: 40px;
+        height: 80px;
+        background-color: olivedrab;
+        color: #fff;
+        border-radius: 9px;
+        position: fixed;
+        right: 20px;
+        bottom: 50px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      我滚啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦<br />啦
+    </div>
+    <button class="btn">返回顶部</button>
+
+    <script>
+      var oBtn = document.querySelector(".btn");
+
+      //设置按钮的出现与隐藏
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset;
+        if (scrollTop >= 500) {
+          oBtn.style.display = "block";
+        } else {
+          oBtn.style.display = "none";
+        }
+      };
+
+      //给按钮绑定点击事件,展示动画
+      oBtn.onclick = function () {
+        //动画的初始位置
+        var start = window.pageYOffset;
+
+        //动画的结束位置
+        var end = 0;
+
+        //动画总共走几步(自定义)
+        var totalStep = 24;
+
+        //动画每一步要走的距离
+        var everyStep = (end - start) / totalStep;
+
+        //起始步数变化(用来判断是否到达终点)
+        var startStep = 0;
+
+        //动画开始
+        var timer = setInterval(() => {
+          startStep++;
+          if (startStep >= totalStep) {
+            clearInterval(timer);
+          }
+          start += everyStep;
+          window.scroll(0, start);
+        }, 15);
+      };
+    </script>
+  </body>
+</html>

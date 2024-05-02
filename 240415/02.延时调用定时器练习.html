@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>延时调用定时器练习</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <style>
+      .box {
+        width: 150px;
+      }
+      /* .box:hover ul {
+                display: block;
+            }
+            .box:hover h3 {
+                color: #fff;
+                background-color: rgb(122, 31, 31);
+            } */
+      .box h3 {
+        width: 150px;
+        height: 40px;
+        background-color: pink;
+        line-height: 40px;
+        text-align: center;
+      }
+      .box ul {
+        background-color: antiquewhite;
+        width: 150px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <!-- 鼠标移入悬浮的时候展示列表,移出的时候列表消失 -->
+      <h3>新闻列表</h3>
+      <ul class="list">
+        <li>展示展示展示展示</li>
+        <li>展示展示展示展示</li>
+        <li>展示展示展示展示</li>
+        <li>展示展示展示展示</li>
+        <li>展示展示展示展示</li>
+        <li>展示展示展示展示</li>
+      </ul>
+    </div>
+    <script>
+      var oBox = document.querySelector(".box");
+      var oH3 = document.querySelector("h3");
+      var oList = document.querySelector(".list");
+
+      //用来能够在移出的事件中能够清除移入时的定时器
+      var timer = null;
+
+      //鼠标移入事件
+      oBox.onmouseenter = function () {
+        timer = setTimeout(function () {
+          oList.style.display = "block";
+          oH3.style.backgroundColor = "rgb(122, 31, 31)";
+          oH3.style.color= "#fff";
+        }, 500);
+      };
+
+      //鼠标移出事件
+      oBox.onmouseleave = function () {
+        clearTimeout(timer);
+          oList.style.display = "none";
+          oH3.style.backgroundColor = "pink";
+          oH3.style.color= "#000";
+      };
+    </script>
+  </body>
+</html>

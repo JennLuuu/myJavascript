@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>击鼓传花time2</title>
+  </head>
+  <body>
+    <script>
+      /* 
+            有n个猴子,给猴子一个花,每次传递m个人之后,鼓停,拿到花的猴子被淘汰
+
+            翻译：
+            有一群猴子要进行传递运动： 一个数组用来放一群数据
+            传递m个人： 数据进行m次处理
+            拿到花的猴子被淘汰： 这个数据进行删除
+            */
+
+      /* //用来放数据的数组(存放猴子的编号)
+      var arr = [];
+      for (var j = 1 ; j <= n ; j++ ){
+        arr.push(i);
+      } */
+
+      /* //数据想进行m次处理，就得对数组进行遍历
+            for (var i = 0 ; i < m ; i++ ){
+                //现在的数组处理元素的方式就有个首尾两种处理方式，为了方便数据处理，并且考虑它会循环对数组中的数据数人头，所以可以把第m个人之前的人都放到数组最后去，就解决了两个问题
+                //将前面的元素放到数组后面，一删加一插
+                arr.push(arr.shift());
+            }
+            //将第m个人前面的人都挪过到末尾去了，就删掉现在的第一位就可以
+            arr.shift();
+
+            //目前只实现了遇到第一次m时的处理方式，我们要让他循环起来，找到当前数组中每一个m位的人
+             */
+
+      /* while (arr.length > 1) {
+        for (var i = 0; i < m; i++) {
+          arr.push(arr.shift());
+        }
+
+        arr.shift();
+      } */
+
+      function jiGuChuanHua(n, m) {
+        var arr = [];
+        for (var j = 1; j <= n; j++) {
+          arr.push(j);
+        }
+
+        while (arr.length > 1) {
+          for (var i = 0; i < m; i++) {
+            arr.push(arr.shift());
+          }
+
+          arr.shift();
+        }
+        return arr[0];
+      }
+
+      var res = jiGuChuanHua(15, 5);
+      console.log(res);
+    </script>
+  </body>
+</html>

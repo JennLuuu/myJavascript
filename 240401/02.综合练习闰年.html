@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>综合练习-判断是否为闰年</title>
+  </head>
+  <body>
+    <input type="text" class="ipt" />
+    <button>判断</button>
+    <script>
+      /* 
+      用户输入一个年份,点击判断是闰年还是非闰年
+      //年份能够被4整除且不能被100整除，或者年份能够被400整除
+
+      思路:
+      1. 获取元素
+      2. 绑定点击事件
+      3. 在点击事件中获取输入的内容
+      4. 判断是否是闰年
+        {year % 4 && year % 100}是闰年
+        {year % 400}是闰年
+      5. 是则输出是闰年,否则输出不是闰年
+    
+    */
+
+    var oIpt = document.querySelector("input");
+    var oBtn = document.querySelector("button");
+
+    oBtn.onclick = function(){
+        var year = +oIpt.value;
+
+        //判断输入的是否是纯数字
+        if (!year) {
+            alert("不是纯数字,重新输入");
+            oIpt.value = "";
+
+            return;
+        }
+
+        if (year % 4 === 0 && year % 100 !== 0|| year % 400 === 0) {
+            console.log("是闰年");
+        }else{
+            console.log("不是闰年");
+        }
+    }
+    </script>
+  </body>
+</html>

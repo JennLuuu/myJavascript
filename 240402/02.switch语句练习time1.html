@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>if语句练习time1</title>
+  </head>
+  <body>
+    <div class="outer">
+      <input type="text" class="ipt" />
+      <button class="btn">检测</button>
+      <h2>成绩等级为: <span class="con"></span></h2>
+    </div>
+    <script>
+      /* 
+        需求: 获取用户的成绩 根据情况输出等级
+          100:SSS
+          90-99:A
+          80-89:B
+          70-79:C
+          60-69:D
+          ...:不及格
+      
+      */
+      var oIpt = document.querySelector(".ipt");
+      var oBtn = document.querySelector(".btn");
+      var oCon = document.querySelector(".con");
+
+      oBtn.onclick = function () {
+        var iptValue = +oIpt.value;
+
+        //错误优先处理,判断用户输入的是否是非法内容
+        if (!iptValue || iptValue > 100 || iptValue < 0 ) {
+          alert("非法输入,请重新输入!!");
+          oIpt.value = "";
+
+          //直接退出本次事件
+          return;
+        }
+
+        //声明一个值,用于存放要放入页面的值
+        var result = "";
+
+        //成绩等级判断
+        switch (parseInt(iptValue/10)) {
+          case 10:
+            result = "SSS";
+            break;
+          case 9:
+            result = "A";
+            break;
+          case 8:
+            result = "B";
+            break;
+          case 7:
+            result = "C";
+            break;
+          case 6:
+            result = "D";
+            break;
+          default:
+            result = "不及格!!!重新补考!!!";
+            break;
+        }
+
+        //将result给到页面
+        oCon.textContent = result;
+      };
+    </script>
+  </body>
+</html>

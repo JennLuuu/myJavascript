@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>打开和关闭窗口</title>
+    </head>
+    <body>
+        <button class="openBtn">打开新窗口</button>
+        <button class="closeNewBtn">关闭打开的新窗口</button>
+        <button class="closeSelfBtn">关闭自身窗口</button>
+        <script>
+
+            var oOpenBtn = document.querySelector(".openBtn");
+            var oCloseNewBtn = document.querySelector(".closeNewBtn");
+            var oCloseSelfBtn = document.querySelector(".closeSelfBtn");
+
+            //为了每个点击事件中都能拿到打开的新窗口,就需要定义为全局变量
+            var btn = null;
+            //打开新窗口
+            oOpenBtn.onclick = function(){
+                btn = window.open("http://www.baidu.com","_blank","width=300px,height=400px,left=200px,top=200px");
+                console.log(btn);
+            }
+            
+
+            //关闭新窗口
+            oCloseNewBtn.onclick=function(){
+                btn.close();
+            }
+
+            //关闭自身窗口
+            oCloseSelfBtn.onclick=function(){
+                window.close();
+            }
+        </script>
+    </body>
+</html>

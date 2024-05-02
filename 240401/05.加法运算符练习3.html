@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>加法运算符练习2</title>
+    <style>
+      .box {
+        background-color: pink;
+        height: 200px;
+        width: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" class="ipt1" placeholder="请输入第一个值" />
+    <input type="text" class="ipt2" placeholder="请输入第二个值" />
+    <button>求和</button>
+    <div class="box"></div>
+
+    <script>
+      /* 
+            需求: 点击按钮的时候,获取两个输入框的内容,并求和,再把和设置给box为宽度
+            思路:
+            1. 获取元素
+            2. 绑定点击事件
+            3. 在点击事件中获取输入的内容
+            4. 求和
+            5. 求出的和给box设置为宽度
+            */
+
+      var oIpt1 = document.querySelector(".ipt1");
+      var oIpt2 = document.querySelector(".ipt2");
+      var oBtn = document.querySelector("button");
+      var oBox = document.querySelector(".box");
+
+      oBtn.onclick = function () {
+        var ipt1Value = oIpt1.value;
+        var ipt2Value = oIpt2.value;
+
+        if (isNaN(ipt1Value) || isNaN(ipt2Value)) {
+          alert("输入包含非法字符,请重新输入");
+        } else {
+          var sum = +ipt1Value + +ipt2Value;
+          // console.log(sum);
+          oBox.style.width = sum + "px";
+        }
+      };
+    </script>
+  </body>
+</html>

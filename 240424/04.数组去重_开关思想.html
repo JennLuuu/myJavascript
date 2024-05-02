@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>数组去重_开关思想</title>
+  </head>
+  <body>
+    <script>
+      var arr = ["a", "b", "h", "f", "b", "h", "f", "t", "p", "o"];
+
+      var newArr = [];
+      var index = 0;
+
+      for (var i = 0; i < arr.length; i++) {
+        //默认没有重复的
+        var flag = true;
+
+        for (var j = 0; j < newArr.length; j++) {
+          if (newArr[j] === arr[i]) {
+            flag = !flag;
+            break;
+          }
+        }
+
+        if(flag){
+            newArr[index] = arr[i];
+            index++;
+        }
+      }
+      console.log(newArr);
+    </script>
+  </body>
+</html>

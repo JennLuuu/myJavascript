@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>join()方法</title>
+    </head>
+    <body>
+        <script>
+            /* 
+            数组转换-join()方法
+            */
+            var arr = [1, 2, 3, 4, 5];
+            console.log(arr.join());//1,2,3,4,5
+            console.log(arr.join("-"));//1-2-3-4-5
+            console.log(arr.join("+"));//1+2+3+4+5
+            console.log(arr.join(""));//12345
+
+            var arr = [true, [1, 2, 3], undefined, null, {}];
+            console.log(arr.join("-"));//true-1,2,3---[object Object]
+        </script>
+    </body>
+</html>

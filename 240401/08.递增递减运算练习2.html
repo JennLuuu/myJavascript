@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>递增递减练习2</title>
+  </head>
+  <body>
+    <script>
+      var num = 10;
+      num--;//9
+      --num;//8
+      console.log(--num);//7
+      console.log("num = " + num);//num = 7
+
+      var a = 1;
+      a++;//2
+      ++a;//3
+      console.log(a++);//3
+      console.log(++a);//5
+      console.log("++a =" + ++a);//++a = 6
+      console.log("a++ = " + a++);//a++ = 6
+      console.log("a = " + a);//a = 7
+
+      var c = 10;
+      console.log(c++);//10
+      c++;//12
+
+      var d = 20;
+      console.log(++d); //21
+      console.log(++d); //22
+
+      var result = d++ + ++d + d;//22 + 24 + 24 = 70
+
+      d = 20;
+      d = d++;//20
+
+      var e = d++;//20
+      d = e;//20
+      console.log("d = " + d);//d = 20
+    </script>
+  </body>
+</html>

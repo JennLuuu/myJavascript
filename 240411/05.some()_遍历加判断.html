@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>some()_遍历+判断-->得到一个布尔值</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        some方法:
+          * 遍历数组 并判断 得到布尔值
+          * some方法书写和forEach一样
+          * 但是如果some方法的回调函数中,只要有一个返回true,则some返回true,并停止遍历
+      
+      */
+
+      //需求:现在有所有人的年龄,如果有未成年的,则不去出游
+      var arr = [22, 24, 21, 28, 32, 34, 50];
+
+      var isWei = arr.some(function (item) {
+        return item < 18;
+      });
+      if (isWei) {
+        console.log("gg");
+      } else {
+        console.log("happy");
+      }
+    </script>
+  </body>
+</html>

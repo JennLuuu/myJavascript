@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>字符串练习time3</title>
+    </head>
+    <body>
+        <div class="outer">
+            <input type="text">
+            <input type="password">
+            <button>login</button>
+        </div>
+
+        <script>
+            /* 
+            需求:判断输入框输入的内容是否正确,正确则...不正确则...
+
+            思路:
+            1. 获取dom元素;
+            2. 给按钮绑定点击事件;
+            3. 在点击事件中获取输入的内容;
+            4. 判断输入的内容是否正确
+            5. 是则...不是则...
+            */
+
+            var user = document.querySelector(".outer input[type=text]");
+            var pass = document.querySelector(".outer input[type=password]");
+            var oBtn = document.querySelector("button");
+
+            oBtn.onclick = function(){
+
+                var userValue = user.value;
+                var passValue = pass.value;
+
+                if(userValue === "jenn" && passValue === "123"){
+                    console.log("欢迎你jenn");
+                }else{
+                    console.log("是填错了吗?重新填写一下吧");
+                    user.value = "";
+                    pass.value = "";
+                    // userValue = "";
+                    // console.log(userValue);
+                }
+            }
+
+        </script>
+    </body>
+</html>

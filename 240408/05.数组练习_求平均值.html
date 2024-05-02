@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      // 5.求所有人成绩的平均值
+      function average(arr) {
+        var sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+          sum += arr[i];
+        }
+        return sum / arr.length;
+      }
+      var arr = [12, 5, 23, 34, 44, 41, 52, 61, 30];
+      var res = average(arr);
+      console.log(res);
+    </script>
+  </body>
+</html>

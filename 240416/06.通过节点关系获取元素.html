@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>通过节点关系获取元素</title>
+    </head>
+    <body>
+        <ul id="box">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <script>
+            var oBox = document.getElementById("box");
+
+            console.log(oBox.childNodes);
+            console.log(oBox.children);
+            console.log(oBox.firstElementChild);
+        </script>
+    </body>
+</html>

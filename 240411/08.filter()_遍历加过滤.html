@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>filter()_遍历加过滤</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        filter:
+          * 过滤数组,遍历数组,接受一个回调函数作为参数
+          * 返回一个新数组
+          * 只要回调函数返回true,则把本次的元素放入新数组中
+          * 删除数组中某一个元素使用splice 删除数组多个元素使用filter
+      
+      */
+      var arr = [
+        {
+          name: "zhangsan1",
+          age: 12,
+        },
+        {
+          name: "zhangsan2",
+          age: 25,
+        },
+        {
+          name: "zhangsan3",
+          age: 16,
+        },
+        {
+          name: "zhangsan4",
+          age: 30,
+        }
+      ];
+
+      var res = arr.filter(function (item) {
+        return item.age > 18;
+      });
+      console.log(res);
+
+     
+      
+    </script>
+  </body>
+</html>

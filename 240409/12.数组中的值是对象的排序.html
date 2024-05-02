@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>数组中的值是对象的排序</title>
+    <style>
+      * {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="hotUp">按热度升序排名</button>
+    <button class="hotDown">按热度降序排名</button>
+    <button class="priceUp">按价格升序排名</button>
+    <button class="priceDown">按价格降序排名</button>
+    <div>
+      <ul class="con"></ul>
+    </div>
+    <script>
+      var arr = [
+        {
+          id: 1,
+          name: "iphone",
+          hot: "1000",
+          price: "11800",
+        },
+        {
+          id: 2,
+          name: "huawei",
+          hot: "2000",
+          price: "8888",
+        },
+        {
+          id: 3,
+          name: "xiaomi",
+          hot: "998",
+          price: "249000",
+        },
+        {
+          id: 4,
+          name: "vivo",
+          hot: "800",
+          price: "6000",
+        },
+      ];
+
+      //1. 拿到页面元素
+      var oCon = document.querySelector(".con");
+
+      //2. 遍历数组结构并生成到页面中
+      //可以将遍历数组并生成到页面上这个方法包装成函数,每次使用直接调用即可
+      function showList() {
+        var messageStr = "";
+        
+        for (var i = 0; i < arr.length; i++) {
+          //遍历生成的结构不能每遍历一个就重新刷新一次页面,所以就要将数据先有个变量接收,再把变量放到页面上
+          messageStr += `
+        <li>
+            <p>手机品牌:${arr[i].name}</p>
+            <p>手机热度:${arr[i].hot}</p>
+            <p>手机价格:${arr[i].price}</p>
+        </li>`;
+        }
+        oCon.innerHTML = messageStr;
+      }
+      showList();
+
+      //1. 拿到元素
+      var oHotUp = document.querySelector(".hotUp");
+      var oHotDown = document.querySelector(".hotDown");
+      var oPriceUp = document.querySelector(".priceUp");
+      var oPriceDown = document.querySelector(".priceDown");
+
+      //给按钮绑定点击事件
+      //因为每个按钮的效果是不同的,也就是事件不同,所以一个一个绑定
+      oHotUp.onclick = function(){
+        arr.sort(function (a, b) {
+            //此时的a,b,是数组中的元素,所以a,b是一个个数组,不能直接拿数组进行减运算
+            //要比较的是他们内部的属性值
+            return a.hot - b.hot;
+        });
+        console.log("5555");
+        showList();
+      }
+      oHotDown.onclick = function(){
+        arr.sort(function (a, b) {
+            return b.hot - a.hot;
+        });
+        showList();
+      }
+      oPriceUp.onclick = function(){
+        arr.sort(function (a, b) {
+            return a.price - b.price;
+        });
+        showList();
+      }
+      oPriceDown.onclick = function(){
+        arr.sort(function (a, b) {
+            return b.price - a.price;
+        });
+        showList();
+      }
+    </script>
+  </body>
+</html>

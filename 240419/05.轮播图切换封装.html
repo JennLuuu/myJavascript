@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>轮播图左右点击</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .outer {
+        width: 500px;
+        margin: 50px auto;
+        border: 1px solid #000;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .outer .inner {
+        width: 3000px;
+        display: flex;
+      }
+      .inner img {
+        width: 500px;
+        height: 350px;
+      }
+
+      .direction .left,
+      .direction .right {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        line-height: 80px;
+        text-align: center;
+        background-color: #be0b0bc2;
+        font-size: 20px;
+        color: #fff;
+
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .direction .left {
+        left: 0;
+      }
+      .direction .right {
+        right: 0;
+      }
+
+      .list {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+      }
+      .list li {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 5px;
+        background-color: #fff;
+      }
+
+      .list li.active {
+        background-color: #a53030;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner">
+        <img src="./images/01.jpg" alt="" />
+        <img src="./images/02.jpg" alt="" />
+        <img src="./images/03.jpg" alt="" />
+        <img src="./images/04.jpg" alt="" />
+        <img src="./images/05.jpg" alt="" />
+      </div>
+      <div class="direction">
+        <p class="left">&lt;</p>
+        <p class="right">&gt;</p>
+      </div>
+      <ul class="list">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script>
+      var oImgs = document.querySelectorAll(".inner img");
+      var oInner = document.querySelector(".inner");
+      var oLists = document.querySelectorAll(".list li");
+      var oLeft = document.querySelector(".left");
+      var oRight = document.querySelector(".right");
+
+      //核心:定义一个变量,用来保存当前的是哪一个图片
+      var i = 0; //初始值为第一张图片
+
+      //改动样式的核心:使用一个变量进行修改,再将变量赋给样式
+      var position = 0;
+
+      //自动走的timerID
+      var changeTimer = null;
+
+      //点击走动的timerID
+      var moveTimer = null;
+
+      //动画函数
+      function move() {
+        //通过动画修改样式的位置
+        //通用版动画:
+        //起始位置:就是定义的position
+        //终点位置:跳转到每一张图的距离
+        var end = -i * oImgs[0].offsetWidth;
+        //总步数:
+        var totalStep = 34;
+        //每一步的距离:
+        var everyStep = (end - position) / totalStep;
+        //起始步数(用来判断是否到达临界值)
+        var startStep = 0;
+
+        //让动画能动画的走
+        moveTimer = setInterval(() => {
+          startStep++;
+          if (startStep >= totalStep) {
+            clearInterval(moveTimer);
+            autoMove();
+          }
+          position += everyStep;
+          oInner.style.transform = `translateX(${position}px)`;
+        }, 30);
+      }
+
+      //下标小圆点的变化
+      function indexChange() {
+        //下标小圆点的变化
+        oLists.forEach(function (item) {
+          item.classList.remove("active");
+        });
+        oLists[i].classList.add("active");
+      }
+
+      //自动走(让动画能自动走到下一张图)
+      function autoMove() {
+        clearInterval(changeTimer);
+        changeTimer = setInterval(() => {
+          clearInterval(changeTimer);
+
+          //图片++, 定时器走一次,图片走一张
+          i++;
+          if (i >= oImgs.length) {
+            i = 0;
+          }
+
+          move();
+
+          indexChange();
+        }, 3000);
+      }
+
+      autoMove();
+
+      //绑定左右点击切换事件
+      oLeft.onclick = function () {
+        //两种定时器都要清,不然就会出现外边清掉结束了,内层定时器还没结束,出bug
+        clearInterval(changeTimer);
+        clearInterval(moveTimer);
+
+        //左击事件:图片向左走,i--
+        i--;
+        if (i < 0) {
+          i = oImgs.length - 1;
+        }
+
+        move();
+
+        indexChange();
+      };
+
+      //右击事件:点击图片向右走,i++,终点判断条件为最后一张图片
+      oRight.onclick = function () {
+        clearInterval(changeTimer);
+        clearInterval(moveTimer);
+
+        i++;
+        if (i >= oImgs.length) {
+          i = 0;
+        }
+
+        move();
+
+        indexChange();
+      };
+
+      //设置小圆点的点击事件:点击跳转目标图片
+      oLists.forEach(function (item, index) {
+        item.onclick = function () {
+          clearInterval(changeTimer);
+          clearInterval(moveTimer);
+
+          //清空所有样式
+          oLists.forEach(function (item) {
+            item.classList.remove("active");
+          });
+
+          //给当前元素设置样式
+          item.classList.add("active");
+
+          //将index赋给i,点哪一个,就能找到哪一个图片i
+          i = index;
+
+          move();
+        };
+      });
+    </script>
+  </body>
+</html>

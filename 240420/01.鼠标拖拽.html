@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>鼠标拖拽</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: palevioletred;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+
+    <script>
+      var oBox = document.querySelector("#box");
+
+      //先绑定鼠标按下事件
+      oBox.onmousedown = function (e) {
+        //获取:鼠标到box边缘的距离
+        var mouseToBox = {
+          x: e.offsetX,
+          y: e.offsetY,
+        };
+
+        //绑定移动事件
+        document.onmousemove = function (e) {
+          //禁止默认事件
+          e.preventDefault();
+          //定义一个对象,用来实时存储box的坐标
+          var boxPosition = {
+            x: e.clientX - mouseToBox.x,
+            y: e.clientY - mouseToBox.y,
+          };
+
+          //判断临界值
+          if (boxPosition.x <= 0) {
+            boxPosition.x = 0;
+          } else if (
+            boxPosition.x >=
+            document.documentElement.clientWidth - oBox.offsetWidth
+          ) {
+            boxPosition.x =
+              document.documentElement.clientWidth - oBox.offsetWidth;
+          }
+          if (boxPosition.y <= 0) {
+            boxPosition.y = 0;
+          } else if (
+            boxPosition.y >=
+            document.documentElement.clientHeight - oBox.offsetHeight
+          ) {
+            boxPosition.y =
+              document.documentElement.clientHeight - oBox.offsetHeight;
+          }
+
+          //将实时获取到的移动的值赋给box,移动
+          oBox.style.left = boxPosition.x + "px";
+          oBox.style.top = boxPosition.y + "px";
+        };
+      };
+
+      //绑定鼠标抬起事件
+      document.onmouseup = function (e) {
+        //销毁移动事件
+        document.onmousemove = null;
+      }
+    </script>
+  </body>
+</html>

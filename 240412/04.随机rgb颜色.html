@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+    <style>
+      .show {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">点击获取随机色</button>
+    <div class="show"></div>
+
+    <script>
+      var oShow = document.querySelector(".show");
+      var oBtn = document.querySelector(".btn");
+
+      oBtn.onclick = function () {
+        var color = randomColor();
+        oShow.style.backgroundColor = color;
+        oShow.textContent = color;
+      };
+
+      //生成随机颜色函数
+      function randomColor() {
+        var r = Math.floor(Math.random()*256);
+        var g = Math.floor(Math.random()*256);
+        var b = Math.floor(Math.random()*256);
+
+        return `rgb(${r},${g},${b})`;
+      }
+    </script>
+  </body>
+</html>

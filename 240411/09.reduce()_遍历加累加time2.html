@@ -1,0 +1,71 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-12 07:04:39
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-12 07:35:52
+ * @FilePath: \JavaScript\240411\09.reduce()_遍历加累加time2.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>reduce()_遍历加累加time2</title>
+  </head>
+  <body>
+    <script>
+      /* 
+            reduce:
+            * 累加,接收一个回调函数作为参数,再接收一个参数作为累加的初始值
+            * 回调函数的参数
+              - 1: 初始值或上次累加后的值
+              - 2: 当次遍历数组的值
+              - 3: 当次数组的下标
+              - 4: 原数组的引用
+
+            * 回调函数要返回一个值,作为下一次遍历的参数1,previous参数
+            * reduce返回最后累加的结果
+            */
+
+      var arr = [1, 2, 3, 4, 5, 6];
+
+      var res = arr.reduce(function (p, c) {
+        return p + c;
+      }, 0);
+      console.log(res);
+
+      //求数组中每一个字符出现的次数
+      //每一个字符出现的次数 --> 用对象储存
+      //在对象中重复的添加某些元素 --> 累加 --> reduce
+
+      var arr = ["a", "b", "c", "a", "d", "f", "b", "z", "c", "a", "f"];
+
+      var res1 = arr.reduce(function (p, c) {
+        //判断p中是否存在c属性,因为p是对象,所以可以用[]来判断是否包含
+        p[c] ? p[c]++ : (p[c] = 1);
+
+        return p;
+      }, {});
+      console.log(res1);
+
+      //已知用户请求地址:
+      //http://127.0.0.1:8000?user=zhansgan&pass=123&sex=nan&age=20把地址中的查询字符串数据整理出来
+      //把一整串拆分开,将查询字符串一个个放入对象中
+      //一个个放入对象,数据的累加,用reduce
+      var str = "http://127.0.0.1:8000?user=zhansgan&pass=123&sex=nan&age=20";
+      str.split("?");
+      var msgStr = str.split("?")[1].split("&"); //['user=zhansgan', 'pass=123', 'sex=nan', 'age=20']
+      var msgObj = msgStr.reduce(function (p, c) {
+        c.split("=");
+        console.log(c.split("="));
+        p[c.split("=")[0]] = c.split("=")[1];
+
+        return p;
+      }, {});
+
+      console.log(msgObj);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>点击翻页time3</title>
+        <style>
+            * {
+              margin: 0;
+              padding: 0;
+              list-style: none;
+            }
+            .outer {
+              width: 400px;
+              height: 300px;
+              border: 1px solid #ccc;
+              margin: 100px auto 0;
+              position: relative;
+            }
+            .page {
+              position: absolute;
+              bottom: 0px;
+              left: 10%;
+            }
+            .page span {
+              display: inline-block;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background-color: bisque;
+              font-size: 18px;
+              text-align: center;
+              line-height: 20px;
+              margin: 10px 10px;
+            }
+            .con{
+              
+              width: 100%;
+              height: calc(100% - 40px);
+              text-align: center;
+              /* line-height: calc(100% - 40px); */
+            }
+          </style>
+    </head>
+    <body>
+        <div class="outer">
+            <div class="con"></div>
+            <div class="page"></div>
+        </div>
+        
+        <script>
+        
+            var arr = [
+        "秦磊",
+        "王平",
+        "谭芳",
+        "范军",
+        "郑磊",
+        "江敏",
+        "邓勇",
+        "姜秀兰",
+        "谭刚",
+        "唐勇",
+        "乔强",
+        "石超",
+        "郑勇",
+        "贾涛",
+        "胡霞",
+        "田平",
+        "苏强",
+        "万涛",
+        "彭平",
+        "常桂英",
+        "史敏",
+        "宋军",
+        "白超",
+        "常刚",
+        "邓丽",
+        "史霞",
+        "陆杰",
+        "董伟",
+        "徐明",
+        "熊秀兰",
+      ];
+        
+        //页码需要初始化几个值
+
+        //1. 先根据页数, 生成页码放在page标签内部
+
+        //2. 向con中放入内容
+        //根据当前页和每页条数,截取数组中数据,展示到con中
+
+        //3. 点击页码翻页
+        //给每个页码绑定点击事件
+
+            //把当前点击元素的页码交给currentPage
+
+            //截取并展示内容
+             
+           
+        </script>
+    </body>
+</html>

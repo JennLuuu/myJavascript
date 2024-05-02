@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Boolean练习time3</title>
+  </head>
+  <body>
+    <input type="text">
+    <button>提交</button>
+
+    <script>
+      /* 
+      需求:点击按钮的时候，当input内容为空，则把input边框变红，否则是黑的
+
+      思路:
+      1. 获取dom元素;
+      2. 给按钮绑定点击事件;
+      3. 点击事件中获取到dom元素输入的内容;
+      4. 将输入内容进行判断;
+      5. 内容为空则背景色变成粉色,否则log值.
+      */
+
+      var oIpt = document.querySelector("input");
+      var oBtn = document.querySelector("button");
+
+      oBtn.onclick = function(){
+        iptValue = oIpt.value;
+
+        if (Boolean(iptValue)) {
+          console.log(iptValue);
+          oIpt.style.backgroundColor = "white";
+        }else{
+          oIpt.style.backgroundColor = "pink";
+        }
+      }
+    </script>
+  </body>
+</html>

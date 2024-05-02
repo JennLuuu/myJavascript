@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>执行上下文练习</title>
+  </head>
+  <body>
+    <script>
+      /* 
+            一进网页,首先向栈中压入一个全局的context
+            [全局context]
+            调用foo,压入一个foo的context
+            [全局context, foo's context]
+
+            foo(1)
+            i = 1  log foo() begin:" + 1
+            foo(2)
+            i = 2  log foo() begin:" + 2
+            foo(3)
+            i = 3 log foo() begin:" + 3
+            foo(4)
+            i = 4 if结束,return跳出foo(4)
+            foo(4)结束,返回foo(3)中, log  foo() end:" + 3
+            log结束,foo(3)也执行完毕,返回foo(2)中,log  foo() end:" + 2
+            log结束,foo(2)也执行完毕,返回foo(1)中,log  foo() end:" + 1
+            
+            至此函数调用结束,回到全局代码中
+
+            global end: " + 1
+            */
+
+      //请描述执行结果
+      var i = 1;
+      console.log("global begin: " + i);
+
+      foo(1);
+      function foo(i) {
+        if (i == 4) {
+          return;
+        }
+        console.log("foo() begin:" + i);
+        foo(i + 1);
+        console.log("foo() end:" + i);
+      }
+
+      console.log("global end: " + i);
+      /* 
+      打印结果
+      global begin: " + 1
+        foo() begin:" + 1
+        foo() begin:" + 2
+        foo() begin:" + 3
+
+        foo() end:" + 3
+        foo() end:" + 2
+        foo() end:" + 1
+
+        global end: " + 1
+      */
+    </script>
+  </body>
+</html>

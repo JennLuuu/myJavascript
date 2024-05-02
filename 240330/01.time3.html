@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+        <input type="text" name="" id="">
+        <button>检测</button>
+
+        <script>
+
+
+            /* 
+            需求:有一个input输入框,输入电话号,点击按钮,检测用户输入的,是否是纯数字
+
+            思路:
+            1.获取DOM元素
+            2.给按钮绑定点击事件
+            3.在点击事件中,获取输入的内容是什么
+            4.将获取的内容进行比对检测是否为纯数字(用isNaN)
+            5.是则...不是则...
+            
+            */
+            var oIpt = document.querySelector("input");
+            var oBtn = document.querySelector("button");
+
+            oBtn.onclick = function(){
+
+                var iptValue = oIpt.value;
+
+                if(isNaN(iptValue)){
+                    alert("重新输入");
+                }else{
+                    alert("对啦~~");
+                }
+            }
+
+        </script>
+    </body>
+</html>

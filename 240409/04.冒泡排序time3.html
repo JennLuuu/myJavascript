@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>冒泡排序time3</title>
+  </head>
+  <body>
+    <script>
+      var arr = [4, 3, 5, 8, 1, 7, 6, 3, 6, 2];
+
+      //找到一次的最大值后,就可以对剩下的length-1数组遍历,找到剩下的数组中的最大值
+      for (var j = 0; j < arr.length - 1; j++) {
+        //遍历数组,找到当前最大值
+        for (var i = 0; i < arr.length - 1 - j; i++) {
+          if (arr[i] > arr[i + 1]) {
+            var temp = arr[i];
+            arr[i] = arr[i + 1];
+            arr[i + 1] = temp;
+          }
+        }
+      }
+
+      console.log(arr);
+    </script>
+  </body>
+</html>

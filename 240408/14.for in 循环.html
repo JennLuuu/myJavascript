@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /* 
+            for in 循环
+            - 是专门用来遍历对象的
+            - 对象中的属性名和属性值被称为键值对：“key：value”
+            - for (key in obj){}
+            - 每次循环都会拿到key，通过key就能拿到对应的value
+            - forin循环中，只能使用obj[key]的方式，此时的key是一个遍历的变量，需要解析它的值
+            */
+
+      var obj = {
+        name: "zhangsan",
+        age: 18,
+        sex: "男",
+        height: 180,
+      };
+
+      for (const key in obj) {
+        console.log(obj[key]);
+      }
+    </script>
+  </body>
+</html>

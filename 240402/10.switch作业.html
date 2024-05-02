@@ -1,0 +1,103 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-02 20:06:57
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-03 09:30:23
+ * @FilePath: \MyCode\240402\10.作业.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <input type="text" placeholder="请输入一个月份" />
+    <button>该月季节为</button>
+    <div class="show"></div>
+    <script>
+      /* 
+        9. 根据指定的月份输出对应季节
+        10. 从键盘输入星期的整数值，输出星期的英文单词
+    */
+      //9. 根据指定的月份输出对应季节
+      var oIpt = document.querySelector("input");
+      var oBtn = document.querySelector("button");
+      var oShow = document.querySelector(".show");
+
+      oBtn.onclick = function () {
+        var month = +oIpt.value;
+
+        //错误优先处理,当输入的值为NaN和负数时
+        if (!month || (month < 1 && month > 12)) {
+          alert("非法输入,请输入月份");
+          oIpt.value = "";
+
+          return;
+        }
+
+        var season = "";
+
+        switch (month) {
+          case 3:
+          case 4:
+          case 5:
+            season = "春天";
+            break;
+          case 6:
+          case 7:
+          case 8:
+            season = "夏天";
+            break;
+          case 9:
+          case 10:
+          case 11:
+            season = "秋天";
+            break;
+          case 12:
+          case 1:
+          case 2:
+            season = "冬天";
+            break;
+          default:
+            alert("没有这个月份哦");
+            break;
+        }
+        oShow.textContent = season;
+      };
+
+      //10. 从键盘输入星期的整数值，输出星期的英文单词
+      var day = 3;
+
+      switch (day) {
+        case 1:
+          console.log("Monday");
+          break;
+        case 2:
+          console.log("Tuesday");
+          break;
+        case 3:
+          console.log("Wednesday");
+          break;
+        case 4:
+          console.log("Thursday");
+          break;
+        case 5:
+          console.log("Firday");
+          break;
+        case 6:
+          console.log("Saturday");
+          break;
+        case 7:
+          console.log("Sunday");
+          break;
+        default:
+          console.log("没有星期" + day + "哦");
+          break;
+      }
+    </script>
+  </body>
+</html>

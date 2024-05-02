@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>点击翻页time2</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .outer {
+        width: 400px;
+        height: 300px;
+        border: 1px solid #ccc;
+        margin: 100px auto 0;
+        position: relative;
+      }
+      .page {
+        position: absolute;
+        bottom: 0px;
+        left: 10%;
+      }
+      .page span {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: bisque;
+        font-size: 18px;
+        text-align: center;
+        line-height: 20px;
+        margin: 10px 10px;
+      }
+      .con {
+        width: 100%;
+        height: calc(100% - 40px);
+        text-align: center;
+        /* line-height: calc(100% - 40px); */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="con"></div>
+      <div class="page"></div>
+    </div>
+
+    <script>
+      var oCon = document.querySelector(".con");
+      var oPage = document.querySelector(".page");
+
+      var str = "";
+
+      var arr = [
+        "秦磊",
+        "王平",
+        "谭芳",
+        "范军",
+        "郑磊",
+        "江敏",
+        "邓勇",
+        "姜秀兰",
+        "谭刚",
+        "唐勇",
+        "乔强",
+        "石超",
+        "郑勇",
+        "贾涛",
+        "胡霞",
+        "田平",
+        "苏强",
+        "万涛",
+        "彭平",
+        "常桂英",
+        "史敏",
+        "宋军",
+        "白超",
+        "常刚",
+        "邓丽",
+        "史霞",
+        "陆杰",
+        "董伟",
+        "徐明",
+        "熊秀兰",
+      ];
+
+      //页面初始化
+      var currentPage = 1; //当前页面
+      var limit = 4; //限制每个页面中可以有几条数据
+      var total = arr.length; //数据总数
+      var totalPages = Math.ceil(total / limit); //总页数
+
+      //1. 先根据页数,生成页码放在page中
+      var pageStr = "";
+      for (var i = 1; i <= totalPages; i++) {
+        pageStr += `
+        <span>${i}</span>
+        `; //页数字符串进行拼接
+      }
+      oPage.innerHTML = pageStr;
+
+      //2.向con中放入内容
+      //根据当前页和每页条数,截取数组中数据,展示到页面上
+      for (var i = 0; i < arr.length; i++) {
+        var showCon = arr.slice(
+          (currentPage - 1) * limit,
+          (currentPage - 1) * limit + limit
+        );
+        oCon.innerHTML = showCon;
+      }
+
+      //3.点击页码翻页
+      //给每个页码绑定点击事件
+      var oPages = document.querySelectorAll(".page span");
+
+      for (var i = 0; i < oPages.length; i++) {
+        oPages[i].index = i;
+        oPages[i].onclick = function () {
+          currentPage = this.index + 1;
+
+          var showCon = arr.slice(
+            (currentPage - 1) * limit,
+            (currentPage - 1) * limit + limit
+          );
+          oCon.innerHTML = showCon;
+        };
+      }
+    </script>
+  </body>
+</html>

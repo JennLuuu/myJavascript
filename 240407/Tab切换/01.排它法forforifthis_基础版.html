@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>Tab切换</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .outer {
+                width: 600px;
+                height: 100px;
+                border: 1px solid #ccc;
+                margin: 100px auto 0;
+                display: flex;
+                
+
+            }
+            .outer h2 {
+                width: 200px;
+                height: 100px;
+                border: 1px solid #ccc;
+                line-height: 100px;
+                text-align: center;
+            }
+            .outer h2.active {
+                background-color: beige;
+
+            }
+            .con {
+                width: 600px;
+                height: 300px;
+                border: 1px solid #ccc;
+                line-height: 300px;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .con article {
+                /* width: 600px;
+                height: 300px;
+                line-height: 300px;
+                text-align: center; */
+                font-size: 60px;
+                display: none;
+            }
+            .con article.active {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="outer">
+            <h2 class="active">电影</h2>
+            <h2>电视剧</h2>
+            <h2>动漫</h2>
+        </header>
+        <section class="con">
+            <article class="active">这里是电影啊</article>
+            <article>这里是电视剧呀</article>
+            <article>这里是动漫呢</article>
+        </section>
+
+        <script>
+            //获取元素
+            var oHeader = document.querySelectorAll(".outer h2");
+            var oSection = document.querySelectorAll(".con article");
+
+            console.log(oHeader);
+            //给各个元素绑定事件
+            oHeader[0].onclick = function () {
+                oHeader[0].classList.add("active");
+                oHeader[1].classList.remove("active");
+                oHeader[2].classList.remove("active");
+
+                oSection[0].classList.add("active");
+                oSection[1].classList.remove("active");
+                oSection[2].classList.remove("active");
+            }
+
+            oHeader[1].onclick = function () {
+                oHeader[1].classList.add("active");
+                oHeader[0].classList.remove("active");
+                oHeader[2].classList.remove("active");
+
+                oSection[1].classList.add("active");
+                oSection[0].classList.remove("active");
+                oSection[2].classList.remove("active");
+            }
+
+            oHeader[2].onclick = function () {
+                oHeader[2].classList.add("active");
+                oHeader[1].classList.remove("active");
+                oHeader[1].classList.remove("active");
+
+                oSection[2].classList.add("active");
+                oSection[1].classList.remove("active");
+                oSection[0].classList.remove("active");
+            }
+        </script>
+    </body>
+</html>

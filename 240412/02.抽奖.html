@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>抽奖游戏</title>
+  </head>
+  <body>
+    <div>
+      <button id="btn">开始抽奖</button>
+      <span>钻石剩余 <span class="num">1000</span></span>
+      <button class="price">充钱</button>
+    </div>
+    <div>
+      抽奖结果
+      <div class="con"></div>
+    </div>
+    <script>
+      //封装一个随机数函数
+      function random(n, m) {
+        //n,m  为随机数的范围
+        return Math.floor(Math.random() * (m - n) + n);
+      }
+      //钻石初始值
+      var numInit = 1000;
+      var pool = ["金币", "钻石", "鲜花", "体验卡", "英雄碎片", "皮肤碎片"];
+      var NBPool = ["王者水晶"];
+
+      //获取页面元素
+      var oBtn = document.querySelector("#btn");
+      var oNum = document.querySelector(".num");
+      var oPrice = document.querySelector(".price");
+      var oCon = document.querySelector(".con");
+      //99%的机会从pool中抽奖,1%的机会抽中nbpool
+      //生成一个0-100的随机数,向下取整
+      //当随机数为1时抽中nbpool,其他情况为pool中遍历,次数终点为随机数的的值
+
+      //绑定点击事件
+      oBtn.onclick = function () {
+        //判断金额是否为0,为0则提示充值
+        if (numInit<=0) {
+            alert("余额不足,请充值");
+           return;
+
+        }
+        //抽奖结果
+        var chouJiangRes = "";
+        //生成一个随机数chouJiangRes
+        var value = Math.random();
+        if (value < 0.01) {
+          chouJiangRes += NBPool[0];
+        }
+        //当随机数为其他值时,遍历pool
+        else {
+          chouJiangRes += pool[random(0, pool.length)];
+        }
+
+        //每次抽奖后都要将剩余金额-100
+        numInit -= 100;
+        //将减后的金额放到页面上
+        oNum.textContent = numInit;
+
+        //将抽奖结果放到页面上
+        oCon.textContent = chouJiangRes;
+      };
+
+      //充钱事件
+      oPrice.onclick=function(){
+         var chongZhi =  prompt("充值金额为:");
+           if (chongZhi>=100) {
+            oNum.textContent = chongZhi;
+            numInit=chongZhi;
+           }
+      }
+    </script>
+  </body>
+</html>

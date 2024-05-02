@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>滚轮事件</title>
+        <style>
+            #box{
+                width: 300px;
+                height: 300px;
+                background-color: beige;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+        <script>
+            var oBox = document.getElementById("box");
+
+            oBox.onmousewheel = function(e){
+                //在谷歌中,上滚:e.wheelDelta--正数
+                //在谷歌中,下滚:e.wheelDelta--负数
+            }
+
+            oBox.addEventListener("DOMMouseScroll",function(e){
+                //在火狐中,上滚: e.detail--为负
+                //在火狐中,下滚: e.detail--为正
+            })
+        </script>
+    </body>
+</html>

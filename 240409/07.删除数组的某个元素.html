@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>删除数组的某个元素</title>
+    </head>
+    <body>
+        <script>
+            var arr = [1, 2, 3, 4, 5, 6, 2, 3, 4];
+            console.log("原数组",arr);
+            //1. pop: 删除数组末尾的元素
+            arr.pop()
+            console.log(arr);
+
+            //2. shift: 删除数组第一个元素
+            arr.shift();
+            console.log(arr);
+
+            //3. delete关键字
+            delete arr[2];
+            console.log(arr);
+
+            //4. length长度
+            arr.length = 5;
+            console.log(arr);
+
+            //5. splice方法
+            arr.splice(2, 2);
+            console.log(arr);
+        </script>
+    </body>
+</html>

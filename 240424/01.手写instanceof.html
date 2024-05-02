@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function myInstanceof(A, B) {
+        while (A.__proto__) {
+            if (A.__proto__ === B.prototype) {
+                return "true";
+            }
+            A = A.__proto__;
+        }
+        return "false";
+      }
+      /* function myInstanceof(A, B) {
+        if (A.__proto__ === null) {
+          return "false";
+        }
+        if (A.__proto__ === B.prototype) {
+          return "true";
+        } else {
+          A = A.__proto__;
+          myInstanceof(A, B);
+        }
+      } */
+
+      myInstanceof([], Array); //true
+      myInstanceof([], Object); //true
+      myInstanceof(Function, Function); //true
+      myInstanceof(Function, Object); //true
+
+    //   console.log(myInstanceof([], Array));
+    //   console.log(myInstanceof([], Object));
+    //   console.log(myInstanceof(Function, Function));
+    //   console.log(myInstanceof(Function, Object));
+    //   console.log(myInstanceof({}, Array));
+    //   console.log(myInstanceof([], Function));
+    //   console.log(myInstanceof(2, Function));
+    //   console.log(myInstanceof(2, Number));
+
+      var a = [];
+      var b = {};
+
+      function Foo() {}
+      var c = new Foo();
+
+      function child() {}
+      function father() {}
+      child.prototype = new father();
+      var d = new child();
+
+      console.log(myInstanceof(a, Array)); // true
+      console.log(myInstanceof(b, Object)); // true
+      console.log(myInstanceof(b, Array)); // false
+      console.log(myInstanceof(a, Object)); // true
+      console.log(myInstanceof(c, Foo)); // true
+      console.log(myInstanceof(d, child)); // true
+      console.log(myInstanceof(d, father)); // true
+    </script>
+  </body>
+</html>

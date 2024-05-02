@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>try catch finally语句</title>
+    </head>
+    <body>
+
+        <script>
+        /* 
+        try..catch...finally语句
+
+         * 我们可以把可能出现意外的代码放在try中
+         * 如果try中抛出了异常,就会直接进入catch中捕获异常,并不会停止try语句后的代码运行
+         * 无论try中是否有异常,最终都会进入finally中执行(finally是可选的)
+         * catch后的小括号接受一个参数e,代表try中出现的错误,e中有一个message属性,代表错误信息
+        */
+            
+        try {
+            var a = 1;
+            var b = 2;
+
+            // 抛出异常,模拟出现的意外异常
+            throw new Error("没有按照原则书写")
+        } catch (error) {
+            console.log(error);
+            console.log(error.message);
+        }
+
+        console.log(2);
+        </script>
+    </body>
+</html>

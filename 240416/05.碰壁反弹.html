@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>碰壁反弹</title>
+    <style>
+      .outer {
+        width: 800px;
+        height: 500px;
+        background-color: beige;
+        border: 2px solid #ccc;
+        margin: 100px auto;
+      }
+      .moveBox {
+        width: 50px;
+        height: 50px;
+        background-color: olive;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="moveBox">到处碰壁</div>
+    </div>
+    <script>
+      //获取元素
+      var oOuter = document.querySelector(".outer");
+      var oMoveBox = document.querySelector(".moveBox");
+
+      //让moveBox平滑右移顶到头
+      var timer = null;
+      //块移动的距离
+      var moveLength = 0;
+
+      var timer1 = null;
+
+      //开关:向右为true
+      var flag = true;
+
+      oMoveBox.onclick = function () {
+        //清除定时器
+        clearInterval(timer);
+
+        //定时器里判断走的距离
+        timer = setInterval(function () {
+          console.log(11);
+          if (flag) {
+            moveLength += 2;
+            //   console.log(22);
+            //   console.log(moveLength);
+            oMoveBox.style.transform = "translateX(" + moveLength + "px)";
+            if (moveLength <= 750) {
+              moveLength = 750;
+              clearInterval(timer);
+              flag = !flag;
+            }
+          }
+
+          if (!flag) {
+            moveLength -= 1;
+            oMoveBox.style.transform = "translateX(" + moveLength + "px)";
+            if (moveLength <= 0) {
+              moveLength = 0;
+              clearInterval(timer);
+              flag = !flag;
+            }
+          }
+          /* if (moveLength >= 750) {
+
+            moveLength = 750;
+            // console.log(333);
+            // moveLength-=10;
+            clearInterval(timer);
+
+            while (moveLength >= 0) {
+              // console.log(moveLength);
+              //   moveLength -= 1;
+              clearInterval(timer1);
+              timer1 = setInterval(function () {
+                if ((moveLength = 0)) {
+                  clearInterval(timer1);
+                }
+
+                console.log(moveLength);
+                moveLength -= 1;
+                oMoveBox.style.transform = "translateX(" + moveLength + "px)";
+              }, 1);
+            }
+          }
+          if (moveLength < 750) {
+            moveLength += 2;
+            //   console.log(22);
+            //   console.log(moveLength);
+            oMoveBox.style.transform = "translateX(" + moveLength + "px)";
+          } */
+        }, 1);
+      };
+    </script>
+  </body>
+</html>

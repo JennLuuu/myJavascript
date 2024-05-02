@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>选项卡切换</title>
+        <style>
+            .outer{
+                width: 250px;
+                height: 300px;
+                border: 2px solid #333;
+                overflow: hidden;
+            }
+            .title{
+                height: 60px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-evenly;
+            }
+            .content{
+                width: 790px;
+                height: 200px;
+                box-sizing: border-box;
+                display: flex;
+            }
+            .content ul{
+                width: 250px;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="outer">
+            <div class="title">
+                <h3>标题1</h3>
+                <h3>标题2</h3>
+                <h3>标题3</h3>
+            </div>
+            <div class="content">
+                <ul>
+                    <li>嘿嘿嘿嘿嘿</li>
+                    <li>嘿嘿嘿嘿嘿</li>
+                    <li>嘿嘿嘿嘿嘿</li>
+                    <li>嘿嘿嘿嘿嘿</li>
+                    <li>嘿嘿嘿嘿嘿</li>
+                </ul>
+                <ul>
+                    <li>哈哈哈哈哈</li>
+                    <li>哈哈哈哈哈</li>
+                    <li>哈哈哈哈哈</li>
+                    <li>哈哈哈哈哈</li>
+                    <li>哈哈哈哈哈</li>
+                </ul>
+                <ul>
+                    <li>呵呵呵呵呵</li>
+                    <li>呵呵呵呵呵</li>
+                    <li>呵呵呵呵呵</li>
+                    <li>呵呵呵呵呵</li>
+                    <li>呵呵呵呵呵</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            var oH3 = document.querySelectorAll(".title h3");
+            var o
+
+            oH3[0].onclick = function () {
+                console.log(111);
+            }
+        </script>
+    </body>
+</html>

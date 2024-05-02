@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>数组快排time2</title>
+  </head>
+  <body>
+    <script>
+      //接收一个数组,将数组中的数据升序排序
+      //拟定一个基准值(要将基准值从数组中拿出来),遍历数组,将每个值都与基准值比较,比他小就放左数组,比他大就放右数组
+      //使用递归方式,将每一部分都拆解
+      //最后将拆解好的数组合并,并返回
+      function turnArr(arr) {
+        //1. 确定递归结束条件
+        if (arr.length <= 1) {
+          return arr;
+        }
+        //2.拟定基准值
+        var base = arr.shift();
+        //3.声明左右数组
+        var left = [];
+        var right = [];
+        //4.遍历数组,进行比较
+        arr.forEach(function (item) {
+          if (item < base) {
+            //5.比较过后,数据存放
+            left.push(item);
+          } else {
+            right.push(item);
+          }
+          
+        });
+        //6.合并数组
+        return turnArr(left).concat(base, turnArr(right));
+      }
+
+      var arr = [7, 4, 5, 6, 9, 8, 5, 9, 3, 4, 5, 9, 0, 1];
+      var res = turnArr(arr);
+      console.log(res);
+    </script>
+  </body>
+</html>

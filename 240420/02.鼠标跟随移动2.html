@@ -1,0 +1,90 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-20 15:01:06
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-20 15:05:31
+ * @FilePath: \My_JavaScript\240420\02.鼠标跟随移动2.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>鼠标跟随移动</title>
+    <style>
+      
+      img {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+    <img src="https://img95.699pic.com/element/40106/3720.png_860.png" alt="" />
+
+    <script>
+      var oImgs = document.querySelectorAll("img");
+
+      document.onmousemove = function (e) {
+        oImgs.forEach(function (item, index) {
+          setTimeout(function () {
+            item.style.left = e.clientX + "px";
+            item.style.top = e.clientY + "px";
+          }, index * 2);
+        });
+      };
+    </script>
+  </body>
+</html>

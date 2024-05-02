@@ -1,0 +1,54 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-09 15:01:24
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-09 18:00:48
+ * @FilePath: \MyCode\JavaScript\240409\04.冒泡排序.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /* 
+            找到数组的最大值，并放在数组的末尾
+            */
+      /* var arr = [4, 3, 5, 1, 7, 6, 3, 6, 2];
+
+           for (var i = 0 ; i < arr.length ; i++ ){
+            //如果后者比前者小
+            if (arr[i+1] < arr[i]) {
+                //则两者交换位置
+                var temp = arr[i+1];
+                arr[i+1] = arr[i];
+                arr[i] = temp;
+            }
+           }
+           //这比较的是一轮，只找到了数组中最大的值，其他元素并未进行比较，所以需要再套一层for循环，用来遍历其他的元素 */
+
+      var arr = [4, 3, 5, 1, 7, 6, 3, 6, 2];
+
+      //外层for控制进来的比较次数,外层for只为了里面的那个 `-j` 
+      for (var j = 0; j < arr.length - 1; j++) {
+        //内层
+        for (var i = 0; i < arr.length - 1 - j ; i++) {
+          //如果后者比前者小
+          if (arr[i + 1] < arr[i]) {
+            //则两者交换位置
+            var temp = arr[i + 1];
+            arr[i + 1] = arr[i];
+            arr[i] = temp;
+          }
+        }
+      }
+
+      console.log(arr);
+    </script>
+  </body>
+</html>

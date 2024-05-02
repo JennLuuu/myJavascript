@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>十月一日倒计时</title>
+  </head>
+  <body>
+    <div class="con"></div>
+    <script>
+      var oCon = document.querySelector(".con");
+
+      var target = new Date("2024-10-01 00:00:00");
+
+      setInterval(() => {
+        //获取当前时间
+        var timeNow = new Date();
+
+        var chaZhi = target - timeNow;
+        // console.log(chaZhi);
+
+        var day = Math.floor(chaZhi / (1000 * 60 * 60 * 24));
+        var _day = Math.floor(chaZhi % (1000 * 60 * 60 * 24));
+
+        var hour = Math.floor(_day / (1000 * 60 * 60));
+        var _hour = Math.floor(_day % (1000 * 60 * 60));
+
+        var minues = Math.floor(_hour / (1000 * 60));
+        var _minues = Math.floor(_hour % (1000 * 60));
+
+        var second = Math.floor(_minues / 1000);
+        var millisecond = Math.floor(_minues % 1000);
+
+        oCon.textContent = `距离十月一日还有${day}天${hour}小时${minues}分钟${second}秒${millisecond}毫秒`;
+      }, 10);
+    </script>
+  </body>
+</html>

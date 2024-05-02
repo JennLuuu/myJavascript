@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>数组去重思路三</title>
+  </head>
+  <body>
+    <script>
+      /* //思路3.1:遍历数组,看后边有没有相等的元素(使用lastIndexOf检测当前元素下标)和目前遍历的下标是否一致(if判定)
+      //如果一致 则说明后边没有了,就添加到新数组中
+      var arr = ["a", "b", "a", "c", "a", "d", "z", "c", "x", "z"];
+
+      var newArr = [];
+
+      //遍历数组,拿到每一个元素(item当前元素,index当前元素的下标)
+      arr.forEach(function(item,index){
+        //如果:倒着数的item的下标,等于当前元素的下标,说明就没有重复的,直接赋值给新数组即可
+        if (index === arr.lastIndexOf(item)) {
+            newArr.push(item);
+        }
+      })
+      console.log(newArr); */
+
+      /* //思路3.2:遍历数组,看后边有没有相等的元素(使用lastIndexOf检测当前元素下标)和目前遍历的下标是否一致(filter方法)
+      var arr = ["a", "b", "a", "c", "a", "d", "z", "c", "x", "z"];
+
+      var newArr = arr.filter(function(item,index){
+        return index === arr.lastIndexOf(item);
+      })
+
+      console.log(newArr); */
+
+      //思路3.3:遍历数组,看后边有没有相等的元素(使用lastIndexOf检测当前元素下标)和目前遍历的下标是否一致(reduce方法)
+      var arr = ["a", "b", "a", "c", "a", "d", "z", "c", "x", "z"];
+
+      var res = arr.reduce(function(p,c,index){
+        if (index === arr.lastIndexOf(c)) {
+            p.push(c)
+        }
+        return p;
+      },[])
+      console.log(res);
+    </script>
+  </body>
+</html>

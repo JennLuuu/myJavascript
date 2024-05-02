@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>质数的开关思想time4</title>
+    </head>
+    <body>
+
+        <script>
+
+            // 找到1-100中所有的质数
+
+            for (var i = 2 ; i <= 100 ; i++ ){
+                var flag = true;
+                //不可以写 j <= i ,当j=i时,也是符合循环条件的,所以就能进入循环体中进行if判断,j = i 时,取余的时候必为0,也就直接false并且break了,以至于没有符合条件的质数,也就不会log
+                for (var j = 2 ; j < i ; j++ ){
+                    if (i % j === 0) {
+                        // console.log("不是质数");
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    console.log(i);
+                }
+            }
+        </script>
+    </body>
+</html>

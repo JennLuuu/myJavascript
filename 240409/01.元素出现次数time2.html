@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>元素出现次数time2</title>
+    </head>
+    <body>
+        <script>
+            /* 
+            
+            */
+
+            var arr = ["a", "b", "c", "d", "e", "f", "j", "c", "d","a", "b"];
+            //元素出现次数： xxx：4次
+            //键值对的方式存在，所以想到用对象来存储
+            var obj = {};
+
+            //遍历数组
+            for (var i = 0 ; i < arr.length ; i++ ){
+
+                //判断对象中有没有这个元素（在对象中以key的形式存在）
+                //没有，则给对象赋值创建一个这个属性
+                //有，那就给他的值加1
+                if (obj[arr[i]]) {
+                    obj[arr[i]]++;
+                }else{
+                    obj[arr[i]] = 1;
+                }
+            }
+            console.log(obj);
+        </script>
+    </body>
+</html>

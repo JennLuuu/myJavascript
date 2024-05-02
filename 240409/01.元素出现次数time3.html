@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>元素出现次数time3</title>
+    </head>
+    <body>
+        <script>
+            var arr = ["a", "b", "c", "d", "e", "f", "j", "c", "d","a", "b"];
+            //元素出现次数,xxx:几次
+            //键值对的方式存在
+            //用对象存储数据
+            var obj = {};
+
+            //遍历数组
+            for (var i = 0 ; i < arr.length ; i++ ){
+                
+                //看对象中是否有以arr[i]为属性名的属性
+                //有则给他的值++
+                //无则给他赋值为1,强性添加这个属性
+                    if (obj[arr[i]]) {
+                        obj[arr[i]]++;
+                    }else{
+                        obj[arr[i]] = 1;
+                    }
+            }
+            console.log(obj);
+        </script>
+    </body>
+</html>

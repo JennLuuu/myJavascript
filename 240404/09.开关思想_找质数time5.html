@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title>开关思想_找质数</title>
+    </head>
+    <body>
+        <script>
+            //找1-200的所有质数
+
+            for (var i = 2 ; i <= 200 ; i++ ){
+                var flag = true;
+                for (var j = 2 ; j < i ; j++ ){
+                    if (i % j === 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    console.log(i);
+                }
+            }
+        </script>
+    </body>
+</html>

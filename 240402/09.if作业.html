@@ -1,0 +1,126 @@
+<!--
+ * @Author: JennLuuu 1129694837@qq.com
+ * @Date: 2024-04-02 19:27:33
+ * @LastEditors: JennLuuu 1129694837@qq.com
+ * @LastEditTime: 2024-04-02 20:05:51
+ * @FilePath: \MyCode\240402\09.作业.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>if作业</title>
+  </head>
+  <body>
+    
+    <script>
+      /* 
+            if 作业:
+  1. 成年人心率的正常范围是每分钟60-100次。体检时，如果心率不在此范围内，则提示需要做进一步的检查。
+
+  2. 定义一个整数，判定是偶数还是奇数
+
+  3. 成绩为100分时，奖励一辆跑车；成绩为(80，99]时，奖励一辆山地自行车；当成绩为[60,80]时，奖励环球影城一日游；其它时，胖揍一顿。
+
+  4. 由键盘输入三个整数分别存入变量num1、num2、num3，对它们进行排序(使用 if-else if-else)，并且从小到大输出
+
+  5. 定义两个整数，分别为small 和 big，如果第一个整数small大于第二个整数big，就交换。输出显示small和big变量的值。
+
+  7. 编写程序，声明2个变量并赋值。判断两数之和，如果大于等于50，打印“hello world!”
+
+  8. 编写程序，声明2个变量并赋值。判断第一个数大于10，且第2个数小于20，打印两数之和。否则，打印两数的乘积。
+            */
+
+        //1. 成年人心率的正常范围是每分钟60-100次。体检时，如果心率不在此范围内，则提示需要做进一步的检查。
+        var heartBit = 80;
+
+        if (heartBit >= 60 && heartBit <= 100) {
+            console.log("您很正常");
+        }else{
+            console.log("建议您去医院检查一下比较好");
+        }
+
+        //2. 定义一个整数，判定是偶数还是奇数
+        var num = -90;
+
+        //错误优先处理,针对获取内容时
+
+        if (num % 2 == 0) {
+            console.log("偶数");
+        }else{
+            console.log("奇数");
+        }
+
+        //3. 成绩为100分时，奖励一辆跑车；成绩为(80，99]时，奖励一辆山地自行车；当成绩为[60,80]时，奖励环球影城一日游；其它时，胖揍一顿。
+        var grades = 56;
+
+        //错误优先处理,针对获取内容时
+
+        if (grades === 100 ) {
+            console.log("奖励一辆跑车");
+        }else if (grades > 80 && grades <= 99){
+            console.log("奖励一辆山地自行车");
+        }else if (grades >= 60 && grades <= 80){
+            console.log("奖励环球影城一日游");
+        }else {
+            console.log("胖揍一顿");
+        }
+
+        //  有bug  4. 由键盘输入三个整数分别存入变量num1、num2、num3，对它们进行排序(使用 if-else if-else)，并且从小到大输出
+        var num1 = 5;
+        var num2 = 6;
+        var num3 = 58;
+
+        if (num1 > num2) {  //1比2大,进入
+            if (num2 > num3) {  //如果2比3大,则3最小,输出 3 2 1
+                console.log(num3,num2,num1);
+            }else{  //如果2比3小,则2最小,输出 2 3 1
+                console.log(num2,num3,num1);
+            }
+        }else{ //如果1比2小,
+            if (num1 > num3) {  //如果1比3大,则3最小,输出 3 1 2
+                console.log(num3,num1,num2);
+            }else{  //如果1比3小,则1最小,输出 1 3 2
+                console.log(num1,num3,num2);
+            }
+        }
+
+        //5. 定义两个整数，分别为small 和 big，如果第一个整数small大于第二个整数big，就交换。输出显示small和big变量的值。
+        var small = 22;
+        var big = 19;
+        if (small > big ) {
+            var s = null;
+
+            s = small;
+            small = big;
+            big = s;
+            console.log(small,big);
+        }else{
+            console.log(small,big);
+        }
+
+        //7. 编写程序，声明2个变量并赋值。判断两数之和，如果大于等于50，打印“hello world!”
+        var a = 25;
+        var b = 25;
+
+        if((a + b) >= 50){
+            console.log("hello world");
+        }else{
+            console.log("有点小哦");
+        }
+
+        //8. 编写程序，声明2个变量并赋值。判断第一个数大于10，且第2个数小于20，打印两数之和。否则，打印两数的乘积。
+        var a1 = 11;
+        var b1 = 5;
+
+        if(a1 > 10 && b1 < 20){
+            console.log(a1 + b1);
+        }else{
+            console.log(a1 * b1);
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>侧边栏</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .outer {
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        right: 0;
+        top: 100px;
+      }
+
+      .outer h2 {
+        width: 50px;
+        height: 50px;
+        background-color: rgb(14, 134, 94);
+        color: #fff;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .outer p {
+        width: 140px;
+        height: 50px;
+        line-height: 50px;
+        background-color: orange;
+        color: #fff;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <h2>反馈</h2>
+      <p>我的反馈</p>
+    </div>
+
+    <script>
+      var oOuter = document.querySelector(".outer");
+      var oP = document.querySelector(".outer p");
+
+      //保存left的值
+      var oLeft = 0;
+
+      //保存定时器
+      var timer = null;
+
+      oOuter.onmouseenter = function () {
+        //进入事件要先清定时器
+        clearInterval(timer);
+        timer = setInterval(function () {
+          oLeft--;
+          if (oLeft <= -140) {
+            oLeft = -140;
+            clearInterval(timer);
+          }
+          oP.style.left = oLeft + "px";
+        }, 6);
+      };
+
+      oOuter.onmouseleave = function () {
+        //进入事件要先清定时器
+        clearInterval(timer);
+        timer = setInterval(function () {
+          oLeft++;
+          if (oLeft >= 0) {
+            oLeft = 0;
+            clearInterval(timer);
+          }
+          oP.style.left = oLeft + "px";
+        }, 6);
+      };
+    </script>
+  </body>
+</html>
