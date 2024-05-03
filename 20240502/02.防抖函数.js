@@ -45,3 +45,25 @@ function debounce(center, time) {
     }, time);
   };
 }
+
+function debounce(center, time) {
+  var timer = null;
+  return function () {
+    var _this = this;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      center.call(_this);
+    }, time);
+  };
+}
+
+function debounce(center, time) {
+  var timer = null;
+  return function () {
+    var _this = this;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      center.call(_this);
+    }, time);
+  };
+}
