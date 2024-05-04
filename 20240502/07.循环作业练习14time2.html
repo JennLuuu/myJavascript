@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>循环作业练习14time2</title>
+  </head>
+  <body>
+    <script>
+      /* 14. 编写程序从1打印到150，并在每行打印一个值，另外在每个3的倍数行上打印出“foo”,在每个5的倍数行上打印“biz”,在每个7的倍数行上打印输出“baz” */
+
+      for (var i = 1; i <= 150; i++) {
+        var res = i;
+        if (i % 3 === 0) {
+          res = res + "foo";
+        }
+        if (i % 5 === 0) {
+          res = res + "biz";
+        }
+        if (i % 7 === 0) {
+          res = res + "baz";
+        }
+        console.log(res);
+      }
+    </script>
+  </body>
+</html>

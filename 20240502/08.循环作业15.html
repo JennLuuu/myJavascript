@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>循环作业15</title>
+  </head>
+  <body>
+    <script>
+      /* 15. 折纸珠穆朗玛峰，世界最高山峰是珠穆朗玛峰，它的高度是8848.86米，假如我有一张足够大的纸，它的厚度是0.1毫米。请问，我折叠多少次，可以折成珠穆朗玛峰的高度? */
+
+      var start = 0.0001;
+      var end = 8848.86;
+      var sum = 0;
+      while (start <= end) {
+        start *= 2;
+        sum++;
+      }
+      console.log(sum);
+    </script>
+  </body>
+</html>
