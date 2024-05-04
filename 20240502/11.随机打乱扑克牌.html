@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>随机打乱扑克牌</title>
+  </head>
+  <body>
+    <script>
+      var hua = ["♠", "♥", "♣", "♦"];
+      var dian = [
+        "A",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "J",
+        "Q",
+        "K",
+      ];
+
+      //生成一幅扑克牌
+      var puKe = [];
+      hua.forEach(function (item) {
+        for (var i = 0; i < dian.length; i++) {
+          puKe.push(item + dian[i]);
+        }
+      });
+      console.log(puKe);
+
+      //生成一个随机数
+      function random(n, m) {
+        return Math.floor(Math.random() * (m - n) + n);
+      }
+
+      //打乱这副扑克牌
+      for (var i = 0; i < puKe.length; i++) {
+        var randomIndex = random(0, 52);
+        var temp = puKe[i];
+        puKe[i] = puKe[randomIndex];
+        puKe[randomIndex] = temp;
+      }
+
+      console.log(puKe);
+    </script>
+  </body>
+</html>

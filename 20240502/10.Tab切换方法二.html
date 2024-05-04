@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .outer {
+        width: 600px;
+        border: 1px solid #ccc;
+        margin: 50px auto 0;
+      }
+      .outer .header {
+        display: flex;
+      }
+      .header h2 {
+        width: 200px;
+        border: 1px solid #ccc;
+        height: 50px;
+        font-size: 24px;
+        text-align: center;
+        line-height: 50px;
+      }
+      .header h2.active {
+        background-color: rgb(105, 153, 10);
+        color: #fff;
+      }
+
+      .con article {
+        width: 600px;
+        height: 300px;
+        font-size: 60px;
+        text-align: center;
+        line-height: 300px;
+        display: none;
+      }
+
+      .con article.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <header class="header">
+        <h2 class="active">标题一</h2>
+        <h2>标题二</h2>
+        <h2>标题三</h2>
+      </header>
+      <section class="con">
+        <article class="active">内容一</article>
+        <article>内容二</article>
+        <article>内容三</article>
+      </section>
+    </div>
+
+    <script>
+      var oHeaders = document.querySelectorAll(".header h2");
+      var oCons = document.querySelectorAll(".con article");
+
+      oHeaders.forEach(function (item, index) {
+        var _index = index;
+
+        item.onclick = function () {
+          for (var i = 0; i < oHeaders.length; i++) {
+            oHeaders[i].classList.remove("active");
+            oCons[i].classList.remove("active");
+          }
+
+          this.classList.add("active");
+          oCons[_index].classList.add("active");
+        };
+      });
+    </script>
+  </body>
+</html>
