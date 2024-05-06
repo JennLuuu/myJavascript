@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>深拷贝</title>
+  </head>
+  <body>
+    <script>
+      //获取数据类型
+      function getType(target) {
+        return Object.prototype.toString
+          .call(target)
+          .slice(8, -1)
+          .toLowerCase();
+      }
+
+      //深拷贝函数
+      function deepClone(target) {
+        //设一个空的对象
+        var newObj = null;
+        //判断传入的数据是否不是数组和对象
+        if (getType(target) !== "array" && getType(target) !== "object") {
+          return target;
+        }
+        //如果是数组,将newObj初始化为空数组
+        if (getType(target) === "array") {
+          newObj = [];
+        }
+        //如果是对象,将newObj初始化为空对象
+        if (getType(target) === "object") {
+          newObj = {};
+        }
+
+        //遍历target的属性,并赋给newObj
+        for (var key in target) {
+          //如果key是target自身上的属性,则复制
+          if (target.hasOwnProperty(key)) {
+            //将属性值再拆解拷贝,用递归
+            newObj[key] = deepClone(target[key]);
+          }
+        }
+        return newObj;
+      }
+    </script>
+  </body>
+</html>

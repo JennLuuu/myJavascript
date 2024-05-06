@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+            /* 
+            * 创建一个新的对象
+
+            * 第一个参数
+            * 并把接收的第一个参数作为新对象的原型链上一级的原型对象
+            * 属于最简单的继承
+            * (js继承:一个对象能够使用另外一个对象身上的方法和属性)
+            
+            * 第二个参数
+            * 是一个对象
+            * 对象的每一个属性接收一个描述对象(属性名:{描述对象})
+            * 描述对象的属性:
+                - value  属性值
+                - writable  布尔值,控制当前属性是否可以被修改,默认false
+                - enumerable  布尔值,控制当前属性是否可以被枚举(遍历),默认false
+                - configurable  布尔值,控制当前属性能否被删除,默认false
+            */
+
+            var o = {
+                name:"lily",
+            }
+
+            //把o作为obj上一级的原型对象
+            var obj = Object.create(o)
+
+            //创建一个普通的对象(该对象的构造函数的原型对象为Object.prototype)
+            var obj1 = Object.create(Object.prototype)
+
+            //创建一个干干净净的对象,身上没有任何继承的方法属性
+            var obj2 = Object.create(null)
+
+            //参数二添加的属性们都是添加给obj3的
+            var obj3 = Object.create(o,{
+                age:{
+                    value:"25",
+                    writable:true,
+                    enumerable:true,
+                    configurable: true,
+                },
+                height:{
+                    value:"170",
+                }
+            })
+            console.log("obj3",obj3);
+        </script>
+    </body>
+</html>

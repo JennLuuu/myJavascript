@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /* 
+            * 通过Object.defineProperty()给对象扩展存取器属性
+            * 在该存取器属性的描述对象中写getter和setter
+                - getter 指 get(){}
+                - 里面写之后读取该属性时想读取的内容
+                - setter 指 set(){}
+                - 里面写之后操作(改)该属性时想进行的行为
+            */
+
+      var obj = {
+        name: "lily",
+        age: 25,
+      };
+      console.log("原obj",obj);
+
+      Object.defineProperty(obj, "sheIs", {
+        get() {
+          return "she is " + this.name + "," + "and she is " + this.age;
+        },
+        set(value) {
+          var arr = value.split(" ");
+          var newName = arr[0];
+          var newAge = arr[1];
+          this.name = newName;
+          this.age = newAge;
+        },
+      });
+
+      console.log("旧obj.sheIs",obj.sheIs);
+      obj.sheIs = "Jucy 12"
+      console.log("新obj",obj);
+      console.log("新obj.sheIs",obj.sheIs);
+    </script>
+  </body>
+</html>

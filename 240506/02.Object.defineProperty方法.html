@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+            /* 
+            * 给对象扩展 具有描述对象 的属性 时使用
+            * 不限制对象的创建方式
+            * Object.defineProperty()的参数
+                - 参数1: 被扩展的对象
+                - 参数2: "属性名"
+                - 参数3: {描述对象}
+            */
+
+            /* 
+            操作对象的属性时,使用中括号的场景:
+            1. 属性名用变量存放
+            2. 属性名是数字(常见于数组,伪数组)
+            3. 属性名不是规范的字符串: obj["content-type"]
+            */
+
+            var obj = Object.create(null);
+            console.log(obj);
+
+            Object.defineProperty(obj,"height",{
+                value:"175",
+                writable:false,
+                enumerbable:true,
+            })
+
+            console.log(obj);
+        </script>
+    </body>
+</html>
