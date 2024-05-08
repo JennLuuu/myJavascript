@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /* 
+            fn.call({},2,3,4),call干了什么:
+             * 调用fn函数
+             * 将fn的this指向第一个参数
+                - 若参数1为undefined或null,this指向window
+                - 若参数1为基本数据类型,this指向其包装类型
+             * 将调用fn的返回值返出来
+            */
+
+      Function.prototype.call = function (target, ...rest) {
+        if (target === undefined || target === null) {
+          target = window;
+        }
+        if (typeof target !== "object" && typeof target !== "function") {
+          target = Object(target);
+        }
+
+        //想要将fn内部的this指向target
+        //只能通过上下文调用的方式调用
+        //给target扩展一个属性,赋值为函数,调用这个属性的时候,函数内部的this就指向target
+        //要想这个扩展的属性不可能出现重名的情况,就用Symbol()
+        let key = Symbol("key");
+        //属性名表达式的方式
+        target[key] = this;
+
+        //调用target[key]就是调用fn,给fn传参
+        const re = target[key](...rest);
+
+        //call指向参数1时,只是单纯的将this指向target,并不会给target扩展任何属性,所以target[key]用完以后要删掉
+        delete target[key];
+
+        return re;
+      };
+
+      function fn(...rest) {
+        console.log("fn被调用了", ...rest);
+      }
+
+      const re = fn.call({}, 2, 3, 4);
+      console.log(re);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+            /* 
+            bind作用
+             * 返回一个新函数
+             * 当函数被调用的时候,改变this指向第一个参数
+             * 给函数传参
+            */
+
+            Function.prototype.bind = function(target,...rest){
+                const _this = this;
+                return function(){
+                    return _this.apply(target,rest)
+                }
+            }
+
+            function fn(...rest){
+                console.log("fn被调用了",...rest);
+                console.log(this);
+            }
+
+            const fnCopy = fn.bind({},4,5,3,4)
+            const re = fnCopy()
+            console.log(re);
+        </script>
+    </body>
+</html>
