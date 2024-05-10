@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+            const p1 = new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    resolve("成功");
+                    reject(new Error("网断了"))
+                },2000)
+            })
+
+            console.log(p1);
+        </script>
+    </body>
+</html>

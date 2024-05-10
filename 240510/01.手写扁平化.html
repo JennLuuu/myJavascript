@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>手写扁平化</title>
+  </head>
+  <body>
+    <script>
+      /* 
+            手写扁平化:
+            将多维数组展开为一维数组
+            */
+      function myFlat(arr) {
+        const str = arr.join();
+        return str.split(",");
+      }
+
+      const arr = ["a", "b", "f", ["d", "h", ["t", ["u"]]]];
+      const arr2 = ["a", "b", "f", ["d", "h", ["t"]]];
+
+
+      const res = myFlat(arr);
+      console.log(res);
+      const res2 = myFlat(arr2);
+      console.log(res2);
+    </script>
+  </body>
+</html>

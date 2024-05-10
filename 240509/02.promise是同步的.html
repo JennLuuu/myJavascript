@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+            /* 
+            promise是同步的
+            promise的回调函数是同步代码
+            是处理异步代码的
+            promise内部不影响外部同步代码的执行
+            所有同步代码执行完才会执行异步代码
+            */
+            console.log(1);
+            new Promise(()=>{
+                console.log(2);
+                setTimeout(()=>{
+                    console.log(3);
+                },1000)
+                console.log(4);
+            })
+            console.log(5);
+            //1 2 4 5 3
+        </script>
+    </body>
+</html>
