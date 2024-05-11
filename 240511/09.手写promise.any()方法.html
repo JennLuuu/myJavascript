@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>手写promise.any()</title>
+  </head>
+  <body>
+    <script>
+      Promise.any = function (arr) {
+        return new Promise((resolve, reject) => {
+            let count = 0;
+          //遍历arr
+          arr.forEach((item) => {
+            item.then(
+              (value) => {
+                resolve(value);
+              },
+              (error) => {
+                count++;
+                if (count === arr.length) {
+                    reject(new Error("All promises were rejected"));
+                }
+              }
+            );
+          });
+        });
+      };
+
+      const p1 = Promise.reject(1);
+      const p2 = Promise.reject(2);
+      const p3 = Promise.reject(3);
+
+      const result = Promise.any([p1, p2, p3]);
+      console.log(result);
+    </script>
+  </body>
+</html>

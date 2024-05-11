@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>手写Promise.race()</title>
+  </head>
+  <body>
+    <script>
+      Promise.race = function (arr) {
+        return new Promise((resolve, reject) => {
+          //遍历arr,看哪一个then先执行
+          arr.forEach((item) => {
+            item.then(
+              (value) => {
+                resolve(value);
+              },
+              (error) => {
+                reject(error)
+              }
+            );
+          });
+        });
+      };
+
+      const p1 = Promise.reject(1);
+      const p2 = Promise.resolve(2);
+      const p3 = Promise.resolve(3);
+
+      const result = Promise.race([p1, p2, p3]);
+      console.log(result);
+    </script>
+  </body>
+</html>
