@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //请求数据A
+      new Promise((resolve, reject) => {
+        try {
+          throw new Error("请求A网断了");
+          setTimeout(() => {
+            console.log("请求数据A成功");
+            resolve("A");
+          }, 2000);
+        } catch (e) {
+          reject(e);
+        }
+      })
+        //请求数据A结束,请求数据B
+        .then((value) => {
+          return new Promise((resolve, reject) => {
+            try {
+              throw new Error("请求B网断了");
+              setTimeout(() => {
+                console.log("请求数据B成功");
+                resolve("B");
+              }, 1000);
+            } catch (e) {
+              reject(e);
+            }
+          });
+        })
+        //请求数据B结束,请求数据C
+        .then((value) => {
+          return new Promise((resolve, reject) => {
+            try {
+              throw new Error("请求数据C失败");
+              setTimeout(() => {
+                console.log("请求数据C成功");
+                resolve("C");
+              }, 1500);
+            } catch (e) {
+              reject(e);
+            }
+          });
+        })
+        //异常捕获
+        .catch((error) => {
+          console.log("出现错误,代码停止运行,错误信息是" + erro.message);
+        })
+        //无论是成功还是异常,都得执行的语句写在finally中
+        .finally(() => {
+          console.log("程序运行结束");
+        });
+    </script>
+  </body>
+</html>

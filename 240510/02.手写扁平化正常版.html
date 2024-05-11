@@ -1,0 +1,67 @@
+<!--
+ * @Author: Jenn_Lu 1129694837@qq.com
+ * @Date: 2024-05-10 23:56:32
+ * @LastEditors: Jenn_Lu 1129694837@qq.com
+ * @LastEditTime: 2024-05-11 07:53:55
+ * @FilePath: \My_JavaScript\240510\02.手写扁平化正常版.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /* function myFlat(arr, num) {
+        const newArr = []
+        return arr.reduce((p,c)=>{
+            console.log(p);
+            // console.log(Array.isArray(c));
+            if (Array.isArray(c)) {
+                // console.log(444);
+                p.concat(myFlat(c))
+            }else{
+                p.concat(c)
+            }
+            // newArr.push(p);
+            // p=newArr
+            return p;
+        },[])
+        
+      } */
+      /* function myFlat(arr, num = 1) {
+        return num > 0
+          ? arr.reduce((pre, cur) => {
+              pre.concat(Array.isArray(cur) ? myflat(cur, num - 1) : cur);
+            }, [])
+          : arr.slice();
+      } */
+
+      function myFlat(arr, num = 1) {
+        let result = [];
+        for (let i = 0; i < arr.length; i++) {
+          let value = arr[i];
+          if (Array.isArray(value) && num > 0) {
+            let flatValues = myFlat(value, num - 1);
+            result = result.concat(flatValues);
+          } else {
+            result.push(value);
+          }
+        }
+        return result;
+      }
+
+      const arr = ["a", "b", "f", ["d", "h", ["t", ["u"]]]];
+      const arr2 = ["a", "b", "f", ["d", "h", ["t"]]];
+
+      const res = myFlat(arr, 3);
+      console.log(res);
+      const res2 = myFlat(arr2, 2);
+      console.log(res2);
+    </script>
+  </body>
+</html>

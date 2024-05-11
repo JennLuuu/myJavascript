@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //请求数据A
+      new Promise((resolve, reject) => {
+        try {
+          //throw new Error("请求A出错")
+          setTimeout(() => {
+            const data = {
+              id: "001",
+              name: "lily",
+            };
+            console.log("请求数据A成功");
+            resolve(data);
+          }, 2000);
+        } catch (e) {
+          reject(e);
+        }
+      })
+        .then((value) => {
+          //发送数据B的请求
+          return new Promise((resolve, reject) => {
+            try {
+              //throw new Error("请求B出错")
+              setTimeout(() => {
+                const data = {
+                  sex: "男",
+                  height: 180,
+                };
+                console.log("请求数据B成功");
+                resolve({ ...data, ...value });
+              }, 1000);
+            } catch (e) {
+              reject(e);
+            }
+          });
+        })
+        .then((value) => {
+          return new Promise((resolve, reject) => {
+            try {
+              throw new Error("请求C出错");
+              setTimeout(() => {
+                const data = {
+                  study: "ES6",
+                  weight: 115,
+                };
+                console.log("请求数据C成功");
+                resolve({ ...data, ...value });
+              }, 1500);
+            } catch (e) {
+              reject(e);
+            }
+          });
+        })
+        .then((value) => {
+          console.log("请求完整的数据是", value);
+        })
+        .catch((error) => {
+          console.log("出现错误,代码停止,错误信息是" + error.message);
+        })
+        .finally(() => {
+          console.log("程序运行结束");
+        });
+    </script>
+  </body>
+</html>

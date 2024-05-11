@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /* 
+        Promise的finally方法:
+          * 调用finally的promise实例,无论成功和失败都会进入finally中执行
+          * finally的回调函数不接受任何参数]
+          * finally方法的返回值:
+            - 没有回调函数的时候,直接穿透
+            - 回调函数没有返回值或者返回的不是失败promise实例的时候,也是直接穿透
+            - 回调函数如果返回失败的promise,则finally返回的promise和回调函数返回的promise保持一致
+            - 回到函数中如果抛出异常,则finally直接返回失败的promise实例,值为异常信息
+      */
+    </script>
+  </body>
+</html>

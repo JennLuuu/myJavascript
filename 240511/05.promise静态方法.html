@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <title></title>
+    </head>
+    <body>
+     <script>
+        /* 
+        Promise.resolve(value)
+        Promise.reject(error)
+
+        Promise.all()
+         * all方法接受一个iterable类型作为参数(常用数组)
+         * 如果all方法接收的所有promise都是成功状态，则all方法返回成功的promise，值为所有成功值组成的数组
+         * 如果all方法中有失败的promise,则all方法返回的promise和失败的promise保持一致
+        
+        Promise.allSettled()
+         * allSettled方法接受一个iterable类型作为参数(常用数组)
+         * allSettled方法返回成功promise,值为每一个promise的状态和值组成的对象({status:xxx,value:xxx}) 再组成的数组
+        
+        Promise.race()
+         * race方法接受一个iterable类型作为参数(常用数组)
+         * race返回一个promise实例,和所有promise中改变状态最快的那个promise实例保持一致
+        
+        Promise.any()
+         * any方法接受一个iterable类型作为参数(常用数组)
+         * any方法返回一个promise实例，和所有promise实例最先返回成功那个保持一致
+         * 如果所有的promise实例全部失败，则返回一个新的错误类型：AggregateError: All promises were rejected
+         */
+     </script>
+    </body>
+</html>
