@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>手写Promise.all()</title>
+  </head>
+  <body>
+    <script>
+      Promise.all = function (arr) {
+        return new Promise((resolve, reject) => {
+          const valueArr = [];
+          let count = 0;
+          //遍历arr
+          arr.forEach((item) => {
+            //2. 判断item是不是一个promise实例,如果不是则包装成promise实例
+            if (!(item instanceof Promise)) {
+              item = Promise.resolve(item);
+            }
+
+            //3.判断item是成功还是失败
+            //如果成功,则把item的值放在数组中保存
+            //如果失败,则把item也放在数组中保存
+            item.then(
+              (value) => {
+                count++;
+                valueArr.push(value);
+                if (count>=arr.length) {
+                    resolve(valueArr)
+                }
+              },
+              (error) => {
+                reject(error);
+              }
+            );
+          });
+        });
+      };
+
+
+      const p1 = Promise.resolve(1)
+      const p2 = Promise.resolve(2)
+      const p3 = Promise.resolve(3)
+
+      const result = Promise.all([p1,p2,p3])
+      console.log(result);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>手写promise.allSettled()</title>
+  </head>
+  <body>
+    <script>
+      Promise.allSettled = function (arr) {
+        return new Promise((resolve, reject) => {
+          const result = [];
+          let count = 0;
+          arr.forEach((item) => {
+            const obj = {};
+            item.then(
+              (value) => {
+                count++;
+                obj.status = "fulfilled";
+                obj.value = value;
+                result.push(obj);
+                if (count===arr.length) {
+                    resolve(result)
+                }
+              },
+              (error) => {
+                count++;
+                obj.status = "rejected";
+                obj.value = error;
+                if (count === arr.length) {
+                    resolve(result);
+                }
+              }
+            );
+          });
+        });
+      };
+
+      const p1 = Promise.resolve(1);
+      const p2 = Promise.resolve(2);
+      const p3 = Promise.resolve(3);
+
+      const result = Promise.allSettled([p1,p2,p3])
+      console.log(result);
+    </script>
+  </body>
+</html>
