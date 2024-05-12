@@ -1,0 +1,14 @@
+{
+  "name": "my_javascript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitee.com:JennLuuu/my-javascript.git",
+  "author": "Jenn_Lu <1129694837@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "zepto": "^1.2.0"
+  }
+}
